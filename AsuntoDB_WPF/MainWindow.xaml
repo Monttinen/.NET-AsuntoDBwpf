@@ -1,0 +1,92 @@
+﻿<Window x:Class="AsuntoDB_WPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="AsuntoDB" Height="450" Width="1000" MinHeight="450" MinWidth="900">
+    <DockPanel LastChildFill="True" >
+        <StatusBar DockPanel.Dock="Bottom" Height="30">
+            <StatusBarItem x:Name="sbItem" Content="Status"/>
+        </StatusBar>
+        <TabControl HorizontalAlignment="Stretch" DockPanel.Dock="Top" VerticalAlignment="Stretch" Height="Auto">
+            <TabItem Header="Asukkaat">
+                <Grid>
+                    <ListBox x:Name="lbHenkiloLista" Margin="0,0,0,40" HorizontalAlignment="Left" Width="189"/>
+                    <Button x:Name="btnHenkiloUusi" Content="Uusi" Width="75" Margin="0,0,0,7" HorizontalAlignment="Left" Height="28" VerticalAlignment="Bottom"/>
+                    <Button x:Name="btnHenkiloPoista" Content="Poista" Width="75" Margin="80,0,0,7" HorizontalAlignment="Left" Height="28" VerticalAlignment="Bottom"/>
+
+                    <Label Content="Henkilö" Margin="194,0,0,0" FontSize="24" HorizontalAlignment="Left" Width="188" Height="45" VerticalAlignment="Top"/>
+                    <Label Content="Henkilönumero" Margin="195,50,0,0" Height="24" Width="100" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    <TextBox x:Name="txtHenkilonumero" Margin="300,50,0,0"  Width="188" Text="" HorizontalAlignment="Left" Height="24" VerticalAlignment="Top" />
+                    <Label Content="Etunimi" Margin="195,79,0,0" Height="24" Width="100" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    <TextBox x:Name="txtEtunimi" Margin="300,79,0,0"  Width="188" Text="" HorizontalAlignment="Left" Height="24" VerticalAlignment="Top" />
+                    <Label Content="Sukunimi" Margin="195,108,0,0" Height="24" Width="100" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    <TextBox x:Name="txtSukunimi" Margin="300,108,0,0"  Width="188" Text="" HorizontalAlignment="Left" Height="24" VerticalAlignment="Top" />
+                    <Label Content="Syntymäaika" Margin="195,137,0,0" Height="24" Width="100" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    <TextBox x:Name="txtSyntymaaika" Margin="300,137,0,0"  Width="188" Text="" HorizontalAlignment="Left" Height="24" VerticalAlignment="Top" />
+                    <Label Content="Sukupuoli" Margin="195,164,0,0" Height="24" Width="100" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    <ComboBox x:Name="cbSukupuoli" HorizontalAlignment="Left" Margin="300,166,0,0" VerticalAlignment="Top" Width="188"/>
+
+                    <Button x:Name="btnHenkiloallenna" Content="Tallenna" HorizontalAlignment="Left" Margin="300,296,0,0" VerticalAlignment="Top" Width="75"/>
+                    <Button x:Name="btnHenkiloPeruuta" Content="Peruuta" HorizontalAlignment="Left" Margin="380,296,0,0" VerticalAlignment="Top" Width="75"/>
+
+                    <Label Content="Henkilön asunto" Margin="558,0,0,0" FontSize="24" HorizontalAlignment="Left" Width="188" Height="45" VerticalAlignment="Top"/>
+                    <Label Content="Asuntonumero" Margin="558,50,0,0" Height="24" Width="100" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    <TextBox x:Name="txtHenkiloAsuntoAsuntonumero" Margin="663,50,0,0"  Width="188" Text="" HorizontalAlignment="Left" Height="24" VerticalAlignment="Top" IsEnabled="False" />
+                    <Label Content="Osoite" Margin="558,81,0,0" Height="24" Width="100" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    <TextBox x:Name="txtHenkiloAsuntoOsoite" Margin="663,81,0,0"  Width="188" Text="" HorizontalAlignment="Left" Height="89" VerticalAlignment="Top" IsEnabled="False" />
+                    <Label Content="Pinta-ala" Margin="558,175,0,0" Height="24" Width="100" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    <TextBox x:Name="txtHenkiloAsuntoPintaala" Margin="663,175,0,0"  Width="188" Text="" HorizontalAlignment="Left" Height="24" VerticalAlignment="Top" IsEnabled="False" />
+                    <Label Content="Huonemäärä" Margin="558,204,0,0" Height="24" Width="100" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    <TextBox x:Name="txtHenkiloAsuntoHuonemaara" Margin="663,204,0,0"  Width="188" Text="" HorizontalAlignment="Left" Height="24" VerticalAlignment="Top" IsEnabled="False" />
+                    <Label Content="Asuntotyyppi" Margin="558,233,0,0" Height="24" Width="100" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    <ComboBox x:Name="cbHenkiloAsuntotyyppi" HorizontalAlignment="Left" Margin="663,235,0,0" VerticalAlignment="Top" Width="188" IsEnabled="False"/>
+                    <Label Content="Omistusasunto" Margin="558,262,0,0" Height="24" Width="100" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    <CheckBox x:Name="chkHenkiloOmistusasunto" Content="CheckBox" HorizontalAlignment="Left" Margin="663,270,0,0" VerticalAlignment="Top" IsEnabled="False"/>
+
+                    <Button x:Name="btnHenkiloAsuntoLisaa" Content="Lisää" HorizontalAlignment="Left" Margin="663,296,0,0" VerticalAlignment="Top" Width="75"/>
+                    <Button x:Name="btnHenkiloAsuntoPoista" Content="Poista" HorizontalAlignment="Left" Margin="743,296,0,0" VerticalAlignment="Top" Width="75"/>
+
+
+
+                </Grid>
+            </TabItem>
+            <TabItem Header="Asunnot">
+                <Grid>
+                    <ListBox x:Name="lbAsuntoLista" Margin="0,0,0,40" HorizontalAlignment="Left" Width="189" SelectionChanged="lbAsuntoLista_SelectionChanged"/>
+                    <Button x:Name="btnAsuntoUusi" Content="Uusi" Width="75" Margin="0,0,0,7" HorizontalAlignment="Left" Height="28" VerticalAlignment="Bottom"/>
+                    <Button x:Name="btnAsuntoPoista" Content="Poista" Width="75" Margin="80,0,0,7" HorizontalAlignment="Left" Height="28" VerticalAlignment="Bottom"/>
+                    <Label Content="Asunto" Margin="194,0,0,0" FontSize="24" HorizontalAlignment="Left" Width="188" Height="45" VerticalAlignment="Top"/>
+                    <Label Content="Asuntonumero" Margin="194,50,0,0" Height="24" Width="100" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    <TextBox x:Name="txtAsuntoAsuntonumero" Margin="299,50,0,0"  Width="188" Text="" HorizontalAlignment="Left" Height="24" VerticalAlignment="Top" />
+                    <Label Content="Osoite" Margin="194,79,0,0" Height="24" Width="100" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    <TextBox x:Name="txtAsuntoOsoite" Margin="299,79,0,0"  Width="188" Text="" HorizontalAlignment="Left" Height="89" VerticalAlignment="Top" />
+                    <Label Content="Pinta-ala" Margin="194,173,0,0" Height="24" Width="100" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    <TextBox x:Name="txtAsuntoPintaala" Margin="299,173,0,0"  Width="188" Text="" HorizontalAlignment="Left" Height="24" VerticalAlignment="Top" />
+                    <Label Content="Huonemäärä" Margin="194,202,0,0" Height="24" Width="100" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    <TextBox x:Name="txtAsuntoHuonemaara" Margin="299,202,0,0"  Width="188" Text="" HorizontalAlignment="Left" Height="24" VerticalAlignment="Top" />
+                    <Label Content="Asuntotyyppi" Margin="194,231,0,0" Height="24" Width="100" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    <ComboBox x:Name="cbAsuntotyyppi" HorizontalAlignment="Left" Margin="299,233,0,0" VerticalAlignment="Top" Width="188"/>
+                    <Label Content="Omistusasunto" Margin="194,260,0,0" Height="24" Width="100" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    <CheckBox x:Name="chkOmistusasunto" Content="CheckBox" HorizontalAlignment="Left" Margin="299,268,0,0" VerticalAlignment="Top"/>
+                    <Button x:Name="btnAsuntoTallenna" Content="Tallenna" HorizontalAlignment="Left" Margin="314,299,0,0" VerticalAlignment="Top" Width="75"/>
+                    <Button x:Name="btnAsuntoPeruuta" Content="Peruuta" HorizontalAlignment="Left" Margin="394,299,0,0" VerticalAlignment="Top" Width="75"/>
+
+                </Grid>
+            </TabItem>
+            <TabItem Header="Asuntotyypit">
+                <Grid>
+                    <ListBox x:Name="lbAsuntotyyppiLista" Margin="0,0,0,40" HorizontalAlignment="Left" Width="189" SelectionChanged="lbAsuntotyyppiLista_SelectionChanged"/>
+                    <Button x:Name="btnAsuntotyyppiUusi" Content="Uusi" Width="75" Margin="0,0,0,7" HorizontalAlignment="Left" Height="28" VerticalAlignment="Bottom"/>
+                    <Button x:Name="btnAsuntotyyppiPoista" Content="Poista" Width="75" Margin="80,0,0,7" HorizontalAlignment="Left" Height="28" VerticalAlignment="Bottom"/>
+
+                    <Label Content="Asuntotyyppi" Margin="194,0,0,0" FontSize="24" HorizontalAlignment="Left" Width="188" Height="45" VerticalAlignment="Top"/>
+                    <Label Content="Selite" Margin="194,50,0,0" Height="24" Width="100" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    <TextBox x:Name="txtAsuntotyyppiSelite" Margin="299,50,0,0"  Width="188" Text="" HorizontalAlignment="Left" Height="24" VerticalAlignment="Top" />
+                    <Button x:Name="btnAsuntotyyppiTallenna" Content="Tallenna" HorizontalAlignment="Left" Margin="299,79,0,0" VerticalAlignment="Top" Width="75"/>
+                    <Button x:Name="btnAsuntotyyppiPeruuta" Content="Peruuta" HorizontalAlignment="Left" Margin="379,79,0,0" VerticalAlignment="Top" Width="75"/>
+
+                </Grid>
+            </TabItem>
+        </TabControl>
+
+    </DockPanel>
+</Window>
