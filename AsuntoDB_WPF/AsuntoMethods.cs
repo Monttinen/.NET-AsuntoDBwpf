@@ -84,7 +84,7 @@ namespace AsuntoDB_WPF
                 txtAsuntoHuonemaara.IsEnabled = true;
                 chkOmistusasunto.IsEnabled = true;
                 cbAsuntotyyppi.IsEnabled = true;
-                cbAsuntotyyppi.SelectedValue = valittu.Asuntotyyppi;
+                cbAsuntotyyppi.SelectedValue = valittu.AsuntotyyppiKoodi;
             }
         }
 

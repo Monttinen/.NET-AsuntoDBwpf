@@ -87,7 +87,7 @@ namespace AsuntoDB_WPF
                 txtEtunimi.Text = valittu.Etunimi;
                 txtSyntymaaika.Text = valittu.Syntymaaika;
                 txtHenkilonumero.Text = valittu.Henkilonumero;
-                cbSukupuoli.SelectedValue = valittu.Sukupuoli;
+                cbSukupuoli.SelectedValue = valittu.SukupuoliKoodi;
                 
                 txtSukunimi.IsEnabled = true;
                 txtEtunimi.IsEnabled = true;
@@ -99,14 +99,14 @@ namespace AsuntoDB_WPF
                 btnHenkiloPeruuta.IsEnabled = true;
 
                 // henkilön asunnon kentät
-                if (valittu.Asunto >= 0)
+                if (valittu.AsuntoAvain >= 0)
                 {
-                    txtHenkiloAsuntoAsuntonumero.Text = valittu.Asunto1.Asuntonumero;
-                    txtHenkiloAsuntoHuonemaara.Text = string.Format("{0}",valittu.Asunto1.Huonelukumaara);
-                    txtHenkiloAsuntoOsoite.Text = valittu.Asunto1.Osoite;
-                    txtHenkiloAsuntoPintaala.Text = string.Format("{0}",valittu.Asunto1.Pinta_ala);
-                    cbHenkiloAsuntotyyppi.SelectedValue = valittu.Asunto1.Asuntotyyppi;
-                    chkHenkiloOmistusasunto.IsChecked = valittu.Asunto1.Omistusasunto;
+                    txtHenkiloAsuntoAsuntonumero.Text = valittu.Asunto.Asuntonumero;
+                    txtHenkiloAsuntoHuonemaara.Text = string.Format("{0}",valittu.Asunto.Huonelukumaara);
+                    txtHenkiloAsuntoOsoite.Text = valittu.Asunto.Osoite;
+                    txtHenkiloAsuntoPintaala.Text = string.Format("{0}",valittu.Asunto.Pinta_ala);
+                    cbHenkiloAsuntotyyppi.SelectedValue = valittu.Asunto.Asuntotyyppi;
+                    chkHenkiloOmistusasunto.IsChecked = valittu.Asunto.Omistusasunto;
 
                     btnHenkiloAsuntoLisaa.IsEnabled = false;
                     btnHenkiloAsuntoPoista.IsEnabled = true;

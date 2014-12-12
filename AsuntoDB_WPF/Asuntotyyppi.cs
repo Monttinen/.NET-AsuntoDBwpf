@@ -19,6 +19,7 @@ namespace AsuntoDB_WPF
             this.Asunto = new HashSet<Asunto>();
         }
     
+        public int Avain { get; set; }
         public int Koodi { get; set; }
         public string Selite { get; set; }
     

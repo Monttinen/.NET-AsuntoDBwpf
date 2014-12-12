@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="83b513e9-e371-4fc3-99e3-6b50d19bb9f1" ChangeDateTime="11/26/2014 14:43:30">
+    <Property Name="ElementName" Value="[dbo].[Henkilo].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Henkilo]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Henkilonumero" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="6afdffd0-04ac-4ef5-bd5e-33a33487b56a" ChangeDateTime="11/26/2014 14:45:43">
+    <Property Name="ElementName" Value="[dbo].[Asunto].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Asunto]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Asuntonumero" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="37497730-a089-4595-95e1-81bd329a3aa3" ChangeDateTime="11/26/2014 14:48:02">
+    <Property Name="ElementName" Value="[dbo].[Sukupuoli].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Sukupuoli]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Koodi" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="3eedebc8-9bba-4afc-aa71-485828a47f29" ChangeDateTime="11/26/2014 14:48:27">
+    <Property Name="ElementName" Value="[dbo].[Asuntotyyppi].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Asuntotyyppi]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Koodi" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="4f871095-f9d9-4750-99be-8e0336f4c6be" ChangeDateTime="11/26/2014 15:04:58">
+    <Property Name="ElementName" Value="[dbo].[FK_Asunto_ToTable]" />
+    <Property Name="ElementType" Value="SqlForeignKeyConstraint" />
+    <Property Name="ParentElementName" Value="[dbo].[Asunto]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[FK_Asunto_ToAsuntotyyppi]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="dee53aae-383c-4ca0-934c-427236667019" ChangeDateTime="11/26/2014 15:16:16">
+    <Property Name="ElementName" Value="[dbo].[Asunto].[Asuntonumero]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Asunto]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Avain" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="a0fd853e-391b-40f9-bc16-c7905f62bea5" ChangeDateTime="11/26/2014 15:16:55">
+    <Property Name="ElementName" Value="[dbo].[Henkilo].[Henkilonumero]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Henkilo]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Avain" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="5ac7e26e-78f0-4416-a930-753d40efb8b9" ChangeDateTime="12/12/2014 11:01:40">
+    <Property Name="ElementName" Value="[dbo].[Asunto].[Asuntotyyppi]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Asunto]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="AsuntotyyppiKoodi" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="909fd5fa-a1e5-490f-9e96-0fa5c662969a" ChangeDateTime="12/12/2014 11:01:55">
+    <Property Name="ElementName" Value="[dbo].[Henkilo].[Sukupuoli]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Henkilo]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="SukupuoliKoodi" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="30a3c7c8-6505-4a2a-8d25-3630d6d4a5ae" ChangeDateTime="12/12/2014 11:08:03">
+    <Property Name="ElementName" Value="[dbo].[Asunto].[Pinta-ala]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Asunto]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Pintaala" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="a3d3d99c-b67a-451e-8e76-821dbf1f41e1" ChangeDateTime="12/12/2014 11:09:42">
+    <Property Name="ElementName" Value="[dbo].[Asunto].[Pintaala]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Asunto]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Pinta_ala" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="81a539cf-bef1-4a25-9d65-05864fa77b58" ChangeDateTime="12/12/2014 11:29:22">
+    <Property Name="ElementName" Value="[dbo].[Henkilo].[Asunto]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Henkilo]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="AsuntoAvain" />
+  </Operation>
+</Operations>

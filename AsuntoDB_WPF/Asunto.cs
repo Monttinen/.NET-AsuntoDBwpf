@@ -24,10 +24,10 @@ namespace AsuntoDB_WPF
         public string Osoite { get; set; }
         public int Pinta_ala { get; set; }
         public int Huonelukumaara { get; set; }
-        public int Asuntotyyppi { get; set; }
+        public int AsuntotyyppiKoodi { get; set; }
         public bool Omistusasunto { get; set; }
     
-        public virtual Asuntotyyppi Asuntotyyppi1 { get; set; }
+        public virtual Asuntotyyppi Asuntotyyppi { get; set; }
         public virtual ICollection<Henkilo> Henkilo { get; set; }
     }
 }

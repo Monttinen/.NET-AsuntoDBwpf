@@ -19,6 +19,7 @@ namespace AsuntoDB_WPF
             this.Henkilo = new HashSet<Henkilo>();
         }
     
+        public int Avain { get; set; }
         public int Koodi { get; set; }
         public string Selite { get; set; }
     

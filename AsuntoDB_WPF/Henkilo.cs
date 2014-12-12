@@ -19,10 +19,10 @@ namespace AsuntoDB_WPF
         public string Etunimi { get; set; }
         public string Sukunimi { get; set; }
         public string Syntymaaika { get; set; }
-        public int Sukupuoli { get; set; }
-        public Nullable<int> Asunto { get; set; }
+        public int SukupuoliKoodi { get; set; }
+        public Nullable<int> AsuntoAvain { get; set; }
     
-        public virtual Asunto Asunto1 { get; set; }
-        public virtual Sukupuoli Sukupuoli1 { get; set; }
+        public virtual Asunto Asunto { get; set; }
+        public virtual Sukupuoli Sukupuoli { get; set; }
     }
 }

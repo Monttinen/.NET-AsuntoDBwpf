@@ -5,6 +5,8 @@ VisualStudioVersion = 12.0.30723.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AsuntoDB_WPF", "AsuntoDB_WPF\AsuntoDB_WPF.csproj", "{64C02E6F-F404-4BBA-AC3C-404F7D00ADFA}"
 EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "AsuntoDB", "AsuntoDB\AsuntoDB.sqlproj", "{B912AE73-1607-459A-AEAE-10899E7810E0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,12 @@ Global
 		{64C02E6F-F404-4BBA-AC3C-404F7D00ADFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{64C02E6F-F404-4BBA-AC3C-404F7D00ADFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{64C02E6F-F404-4BBA-AC3C-404F7D00ADFA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B912AE73-1607-459A-AEAE-10899E7810E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B912AE73-1607-459A-AEAE-10899E7810E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B912AE73-1607-459A-AEAE-10899E7810E0}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{B912AE73-1607-459A-AEAE-10899E7810E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B912AE73-1607-459A-AEAE-10899E7810E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B912AE73-1607-459A-AEAE-10899E7810E0}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

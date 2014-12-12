@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="AsuntoDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="AsuntoDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Asunto">
           <Key>
             <PropertyRef Name="Avain" />
@@ -12,15 +12,16 @@
           <Property Name="Avain" Type="int" Nullable="false" />
           <Property Name="Asuntonumero" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Osoite" Type="nvarchar" MaxLength="100" />
-          <Property Name="Pinta-ala" Type="int" Nullable="false" />
+          <Property Name="Pinta_ala" Type="int" Nullable="false" />
           <Property Name="Huonelukumaara" Type="int" Nullable="false" />
-          <Property Name="Asuntotyyppi" Type="int" Nullable="false" />
+          <Property Name="AsuntotyyppiKoodi" Type="int" Nullable="false" />
           <Property Name="Omistusasunto" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Asuntotyyppi">
           <Key>
-            <PropertyRef Name="Koodi" />
+            <PropertyRef Name="Avain" />
           </Key>
+          <Property Name="Avain" Type="int" Nullable="false" />
           <Property Name="Koodi" Type="int" Nullable="false" />
           <Property Name="Selite" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
@@ -33,13 +34,14 @@
           <Property Name="Etunimi" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Sukunimi" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Syntymaaika" Type="nvarchar" MaxLength="50" />
-          <Property Name="Sukupuoli" Type="int" Nullable="false" />
-          <Property Name="Asunto" Type="int" />
+          <Property Name="SukupuoliKoodi" Type="int" Nullable="false" />
+          <Property Name="AsuntoAvain" Type="int" />
         </EntityType>
         <EntityType Name="Sukupuoli">
           <Key>
-            <PropertyRef Name="Koodi" />
+            <PropertyRef Name="Avain" />
           </Key>
+          <Property Name="Avain" Type="int" Nullable="false" />
           <Property Name="Koodi" Type="int" Nullable="false" />
           <Property Name="Selite" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
@@ -48,10 +50,10 @@
           <End Role="Asunto" Type="Self.Asunto" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Asuntotyyppi">
-              <PropertyRef Name="Koodi" />
+              <PropertyRef Name="Avain" />
             </Principal>
             <Dependent Role="Asunto">
-              <PropertyRef Name="Asuntotyyppi" />
+              <PropertyRef Name="AsuntotyyppiKoodi" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -63,7 +65,7 @@
               <PropertyRef Name="Avain" />
             </Principal>
             <Dependent Role="Henkilo">
-              <PropertyRef Name="Asunto" />
+              <PropertyRef Name="AsuntoAvain" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -72,10 +74,10 @@
           <End Role="Henkilo" Type="Self.Henkilo" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Sukupuoli">
-              <PropertyRef Name="Koodi" />
+              <PropertyRef Name="Avain" />
             </Principal>
             <Dependent Role="Henkilo">
-              <PropertyRef Name="Sukupuoli" />
+              <PropertyRef Name="SukupuoliKoodi" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -97,110 +99,111 @@
             <End Role="Henkilo" EntitySet="Henkilo" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="AsuntoDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="AsuntoDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Asunto" EntityType="AsuntoDBModel.Asunto" />
+          <EntitySet Name="Asuntotyyppi" EntityType="AsuntoDBModel.Asuntotyyppi" />
+          <EntitySet Name="Henkilo" EntityType="AsuntoDBModel.Henkilo" />
+          <EntitySet Name="Sukupuoli" EntityType="AsuntoDBModel.Sukupuoli" />
+          <AssociationSet Name="FK_Asunto_ToAsuntotyyppi" Association="AsuntoDBModel.FK_Asunto_ToAsuntotyyppi">
+            <End Role="Asuntotyyppi" EntitySet="Asuntotyyppi" />
+            <End Role="Asunto" EntitySet="Asunto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Henkilo_ToAsunto" Association="AsuntoDBModel.FK_Henkilo_ToAsunto">
+            <End Role="Asunto" EntitySet="Asunto" />
+            <End Role="Henkilo" EntitySet="Henkilo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Henkilo_ToSukupuoli" Association="AsuntoDBModel.FK_Henkilo_ToSukupuoli">
+            <End Role="Sukupuoli" EntitySet="Sukupuoli" />
+            <End Role="Henkilo" EntitySet="Henkilo" />
+          </AssociationSet>
+        </EntityContainer>
         <EntityType Name="Asunto">
           <Key>
             <PropertyRef Name="Avain" />
           </Key>
           <Property Name="Avain" Type="Int32" Nullable="false" />
-          <Property Name="Asuntonumero" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Asuntonumero" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Osoite" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Pinta_ala" Type="Int32" Nullable="false" />
           <Property Name="Huonelukumaara" Type="Int32" Nullable="false" />
-          <Property Name="Asuntotyyppi" Type="Int32" Nullable="false" />
+          <Property Name="AsuntotyyppiKoodi" Type="Int32" Nullable="false" />
           <Property Name="Omistusasunto" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="Asuntotyyppi1" Relationship="Self.FK_Asunto_ToAsuntotyyppi" FromRole="Asunto" ToRole="Asuntotyyppi" />
-          <NavigationProperty Name="Henkilo" Relationship="Self.FK_Henkilo_ToAsunto" FromRole="Asunto" ToRole="Henkilo" />
+          <NavigationProperty Name="Asuntotyyppi" Relationship="AsuntoDBModel.FK_Asunto_ToAsuntotyyppi" FromRole="Asunto" ToRole="Asuntotyyppi" />
+          <NavigationProperty Name="Henkilo" Relationship="AsuntoDBModel.FK_Henkilo_ToAsunto" FromRole="Asunto" ToRole="Henkilo" />
         </EntityType>
         <EntityType Name="Asuntotyyppi">
           <Key>
-            <PropertyRef Name="Koodi" />
+            <PropertyRef Name="Avain" />
           </Key>
+          <Property Name="Avain" Type="Int32" Nullable="false" />
           <Property Name="Koodi" Type="Int32" Nullable="false" />
-          <Property Name="Selite" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Asunto" Relationship="Self.FK_Asunto_ToAsuntotyyppi" FromRole="Asuntotyyppi" ToRole="Asunto" />
+          <Property Name="Selite" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Asunto" Relationship="AsuntoDBModel.FK_Asunto_ToAsuntotyyppi" FromRole="Asuntotyyppi" ToRole="Asunto" />
         </EntityType>
         <EntityType Name="Henkilo">
           <Key>
             <PropertyRef Name="Avain" />
           </Key>
           <Property Name="Avain" Type="Int32" Nullable="false" />
-          <Property Name="Henkilonumero" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Etunimi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Sukunimi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Henkilonumero" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Etunimi" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Sukunimi" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Syntymaaika" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Sukupuoli" Type="Int32" Nullable="false" />
-          <Property Name="Asunto" Type="Int32" />
-          <NavigationProperty Name="Asunto1" Relationship="Self.FK_Henkilo_ToAsunto" FromRole="Henkilo" ToRole="Asunto" />
-          <NavigationProperty Name="Sukupuoli1" Relationship="Self.FK_Henkilo_ToSukupuoli" FromRole="Henkilo" ToRole="Sukupuoli" />
+          <Property Name="SukupuoliKoodi" Type="Int32" Nullable="false" />
+          <Property Name="AsuntoAvain" Type="Int32" />
+          <NavigationProperty Name="Asunto" Relationship="AsuntoDBModel.FK_Henkilo_ToAsunto" FromRole="Henkilo" ToRole="Asunto" />
+          <NavigationProperty Name="Sukupuoli" Relationship="AsuntoDBModel.FK_Henkilo_ToSukupuoli" FromRole="Henkilo" ToRole="Sukupuoli" />
         </EntityType>
         <EntityType Name="Sukupuoli">
           <Key>
-            <PropertyRef Name="Koodi" />
+            <PropertyRef Name="Avain" />
           </Key>
+          <Property Name="Avain" Type="Int32" Nullable="false" />
           <Property Name="Koodi" Type="Int32" Nullable="false" />
-          <Property Name="Selite" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Henkilo" Relationship="Self.FK_Henkilo_ToSukupuoli" FromRole="Sukupuoli" ToRole="Henkilo" />
+          <Property Name="Selite" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Henkilo" Relationship="AsuntoDBModel.FK_Henkilo_ToSukupuoli" FromRole="Sukupuoli" ToRole="Henkilo" />
         </EntityType>
         <Association Name="FK_Asunto_ToAsuntotyyppi">
-          <End Role="Asuntotyyppi" Type="Self.Asuntotyyppi" Multiplicity="1" />
-          <End Role="Asunto" Type="Self.Asunto" Multiplicity="*" />
+          <End Type="AsuntoDBModel.Asuntotyyppi" Role="Asuntotyyppi" Multiplicity="1" />
+          <End Type="AsuntoDBModel.Asunto" Role="Asunto" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Asuntotyyppi">
-              <PropertyRef Name="Koodi" />
+              <PropertyRef Name="Avain" />
             </Principal>
             <Dependent Role="Asunto">
-              <PropertyRef Name="Asuntotyyppi" />
+              <PropertyRef Name="AsuntotyyppiKoodi" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Henkilo_ToAsunto">
-          <End Role="Asunto" Type="Self.Asunto" Multiplicity="0..1" />
-          <End Role="Henkilo" Type="Self.Henkilo" Multiplicity="*" />
+          <End Type="AsuntoDBModel.Asunto" Role="Asunto" Multiplicity="0..1" />
+          <End Type="AsuntoDBModel.Henkilo" Role="Henkilo" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Asunto">
               <PropertyRef Name="Avain" />
             </Principal>
             <Dependent Role="Henkilo">
-              <PropertyRef Name="Asunto" />
+              <PropertyRef Name="AsuntoAvain" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Henkilo_ToSukupuoli">
-          <End Role="Sukupuoli" Type="Self.Sukupuoli" Multiplicity="1" />
-          <End Role="Henkilo" Type="Self.Henkilo" Multiplicity="*" />
+          <End Type="AsuntoDBModel.Sukupuoli" Role="Sukupuoli" Multiplicity="1" />
+          <End Type="AsuntoDBModel.Henkilo" Role="Henkilo" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Sukupuoli">
-              <PropertyRef Name="Koodi" />
+              <PropertyRef Name="Avain" />
             </Principal>
             <Dependent Role="Henkilo">
-              <PropertyRef Name="Sukupuoli" />
+              <PropertyRef Name="SukupuoliKoodi" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="AsuntoDBEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Asunto" EntityType="Self.Asunto" />
-          <EntitySet Name="Asuntotyyppi" EntityType="Self.Asuntotyyppi" />
-          <EntitySet Name="Henkilo" EntityType="Self.Henkilo" />
-          <EntitySet Name="Sukupuoli" EntityType="Self.Sukupuoli" />
-          <AssociationSet Name="FK_Asunto_ToAsuntotyyppi" Association="Self.FK_Asunto_ToAsuntotyyppi">
-            <End Role="Asuntotyyppi" EntitySet="Asuntotyyppi" />
-            <End Role="Asunto" EntitySet="Asunto" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Henkilo_ToAsunto" Association="Self.FK_Henkilo_ToAsunto">
-            <End Role="Asunto" EntitySet="Asunto" />
-            <End Role="Henkilo" EntitySet="Henkilo" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Henkilo_ToSukupuoli" Association="Self.FK_Henkilo_ToSukupuoli">
-            <End Role="Sukupuoli" EntitySet="Sukupuoli" />
-            <End Role="Henkilo" EntitySet="Henkilo" />
-          </AssociationSet>
-        </EntityContainer>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -209,42 +212,44 @@
           <EntitySetMapping Name="Asunto">
             <EntityTypeMapping TypeName="AsuntoDBModel.Asunto">
               <MappingFragment StoreEntitySet="Asunto">
-                <ScalarProperty Name="Avain" ColumnName="Avain" />
-                <ScalarProperty Name="Asuntonumero" ColumnName="Asuntonumero" />
-                <ScalarProperty Name="Osoite" ColumnName="Osoite" />
-                <ScalarProperty Name="Pinta_ala" ColumnName="Pinta-ala" />
-                <ScalarProperty Name="Huonelukumaara" ColumnName="Huonelukumaara" />
-                <ScalarProperty Name="Asuntotyyppi" ColumnName="Asuntotyyppi" />
                 <ScalarProperty Name="Omistusasunto" ColumnName="Omistusasunto" />
+                <ScalarProperty Name="AsuntotyyppiKoodi" ColumnName="AsuntotyyppiKoodi" />
+                <ScalarProperty Name="Huonelukumaara" ColumnName="Huonelukumaara" />
+                <ScalarProperty Name="Pinta_ala" ColumnName="Pinta_ala" />
+                <ScalarProperty Name="Osoite" ColumnName="Osoite" />
+                <ScalarProperty Name="Asuntonumero" ColumnName="Asuntonumero" />
+                <ScalarProperty Name="Avain" ColumnName="Avain" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Asuntotyyppi">
             <EntityTypeMapping TypeName="AsuntoDBModel.Asuntotyyppi">
               <MappingFragment StoreEntitySet="Asuntotyyppi">
-                <ScalarProperty Name="Koodi" ColumnName="Koodi" />
                 <ScalarProperty Name="Selite" ColumnName="Selite" />
+                <ScalarProperty Name="Koodi" ColumnName="Koodi" />
+                <ScalarProperty Name="Avain" ColumnName="Avain" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Henkilo">
             <EntityTypeMapping TypeName="AsuntoDBModel.Henkilo">
               <MappingFragment StoreEntitySet="Henkilo">
-                <ScalarProperty Name="Avain" ColumnName="Avain" />
-                <ScalarProperty Name="Henkilonumero" ColumnName="Henkilonumero" />
-                <ScalarProperty Name="Etunimi" ColumnName="Etunimi" />
-                <ScalarProperty Name="Sukunimi" ColumnName="Sukunimi" />
+                <ScalarProperty Name="AsuntoAvain" ColumnName="AsuntoAvain" />
+                <ScalarProperty Name="SukupuoliKoodi" ColumnName="SukupuoliKoodi" />
                 <ScalarProperty Name="Syntymaaika" ColumnName="Syntymaaika" />
-                <ScalarProperty Name="Sukupuoli" ColumnName="Sukupuoli" />
-                <ScalarProperty Name="Asunto" ColumnName="Asunto" />
+                <ScalarProperty Name="Sukunimi" ColumnName="Sukunimi" />
+                <ScalarProperty Name="Etunimi" ColumnName="Etunimi" />
+                <ScalarProperty Name="Henkilonumero" ColumnName="Henkilonumero" />
+                <ScalarProperty Name="Avain" ColumnName="Avain" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Sukupuoli">
             <EntityTypeMapping TypeName="AsuntoDBModel.Sukupuoli">
               <MappingFragment StoreEntitySet="Sukupuoli">
-                <ScalarProperty Name="Koodi" ColumnName="Koodi" />
                 <ScalarProperty Name="Selite" ColumnName="Selite" />
+                <ScalarProperty Name="Koodi" ColumnName="Koodi" />
+                <ScalarProperty Name="Avain" ColumnName="Avain" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
