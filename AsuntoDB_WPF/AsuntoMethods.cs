@@ -19,6 +19,7 @@ namespace AsuntoDB_WPF
     {
         private int valittuAsuntoAvain = -1;
         private int valittuAsuntoIndex = -1;
+        private int valittuAsuntoTyyppi = -1;
 
         private void LataaAsunnot()
         {
@@ -31,6 +32,8 @@ namespace AsuntoDB_WPF
             lbAsuntoLista.Items.Refresh();
             lbAsuntoLista.DisplayMemberPath = "Osoite";
             lbAsuntoLista.SelectedValuePath = "Avain";
+
+            PaivitaAsuntotyyppiCombo();
         }
 
 
@@ -68,11 +71,31 @@ namespace AsuntoDB_WPF
             if (valittu != null)
             {
                 sbItem.Content = string.Format("Valittu asunto {0}", valittu.Osoite);
-                txtAsuntoAsuntonumero.Text = "";
-                txtAsuntoOsoite.Text = "";
-                txtAsuntoPintaala.Text = "";
-                txtAsuntoHuonemaara.Text = "";
-                chkOmistusasunto.IsChecked = false;
+                txtAsuntoAsuntonumero.Text = valittu.Asuntonumero;
+                txtAsuntoOsoite.Text = valittu.Osoite;
+                txtAsuntoPintaala.Text = string.Format("{0}", valittu.Pinta_ala);
+                txtAsuntoHuonemaara.Text = string.Format("{0}", valittu.Huonelukumaara);
+                chkOmistusasunto.IsChecked = valittu.Omistusasunto;
+
+                txtAsuntoAsuntonumero.IsEnabled = true;
+                txtAsuntoOsoite.IsEnabled = true;
+                txtAsuntoPintaala.IsEnabled = true;
+                txtAsuntoHuonemaara.IsEnabled = true;
+                chkOmistusasunto.IsEnabled = true;
+                cbAsuntotyyppi.IsEnabled = true;
+
+                // Valitsee tyypin comboboxiin
+                if (valittu.Asuntotyyppi >= 0)
+                {
+                    valittuAsuntoTyyppi = valittu.Asuntotyyppi;
+
+                    cbAsuntotyyppi.SelectedValue = valittuAsuntoTyyppi;
+                }
+                else
+                {
+                    valittuAsuntoTyyppi = -1;
+                    cbAsuntotyyppi.SelectedValue = null;
+                }
             }
         }
 
@@ -80,13 +103,26 @@ namespace AsuntoDB_WPF
         {
             try
             {
-                valittuAsuntotyyppiKoodi = int.Parse(lbAsuntotyyppiLista.SelectedValue.ToString());
+                valittuAsuntoAvain = int.Parse(lbAsuntoLista.SelectedValue.ToString());
             }
             catch (Exception e)
             {
-                valittuAsuntotyyppiKoodi = -1;
+                valittuAsuntoAvain = -1;
             }
-            valittuAsuntotyyppiIndex = lbAsuntotyyppiLista.SelectedIndex;
+            valittuAsuntoIndex = lbAsuntoLista.SelectedIndex;
+        }
+
+        private void PaivitaAsuntotyyppiCombo()
+        {
+            // sidotaan tässä myös tyypit comboboxiin
+            cbAsuntotyyppi.ItemsSource = null;
+            var result = from c in db.Asuntotyyppi
+                          orderby c.Selite
+                          select new { c.Koodi, c.Selite };
+            cbAsuntotyyppi.ItemsSource = result.ToList();
+            cbAsuntotyyppi.DisplayMemberPath = "Selite";
+            cbAsuntotyyppi.SelectedValuePath = "Koodi";
+            cbAsuntotyyppi.Items.Refresh();
         }
     }
 }
