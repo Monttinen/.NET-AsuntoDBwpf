@@ -78,6 +78,7 @@
     <Compile Include="Henkilo.cs">
       <DependentUpon>AsuntoDB_datamodel.tt</DependentUpon>
     </Compile>
+    <Compile Include="HenkiloMethods.cs" />
     <Compile Include="Sukupuoli.cs">
       <DependentUpon>AsuntoDB_datamodel.tt</DependentUpon>
     </Compile>

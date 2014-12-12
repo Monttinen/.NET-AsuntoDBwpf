@@ -3,6 +3,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+
+        <DataTemplate x:Key="HenkiloTemplate">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="{Binding Path=Sukunimi, FallbackValue=sukunimi}" />
+                <TextBlock Text=", " />
+                <TextBlock Text="{Binding Path=Etunimi, FallbackValue=etunimi}" />
+            </StackPanel>
+        </DataTemplate>
+
     </Application.Resources>
 </Application>

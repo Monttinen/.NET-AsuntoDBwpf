@@ -52,6 +52,7 @@ namespace AsuntoDB_WPF
                 txtAsuntoPintaala.Text = "";
                 txtAsuntoHuonemaara.Text = "";
                 chkOmistusasunto.IsChecked = false;
+                cbAsuntotyyppi.SelectedIndex = -1;
 
                 txtAsuntoAsuntonumero.IsEnabled = false;
                 txtAsuntoOsoite.IsEnabled = false;
@@ -83,19 +84,7 @@ namespace AsuntoDB_WPF
                 txtAsuntoHuonemaara.IsEnabled = true;
                 chkOmistusasunto.IsEnabled = true;
                 cbAsuntotyyppi.IsEnabled = true;
-
-                // Valitsee tyypin comboboxiin
-                if (valittu.Asuntotyyppi >= 0)
-                {
-                    valittuAsuntoTyyppi = valittu.Asuntotyyppi;
-
-                    cbAsuntotyyppi.SelectedValue = valittuAsuntoTyyppi;
-                }
-                else
-                {
-                    valittuAsuntoTyyppi = -1;
-                    cbAsuntotyyppi.SelectedValue = null;
-                }
+                cbAsuntotyyppi.SelectedValue = valittu.Asuntotyyppi;
             }
         }
 

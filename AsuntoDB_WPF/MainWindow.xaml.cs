@@ -32,8 +32,10 @@ namespace AsuntoDB_WPF
 
         private void LataaListat()
         {
+            
             LataaAsuntotyypit();
             LataaAsunnot();
+            LataaHenkilot();
         }
 
     }
