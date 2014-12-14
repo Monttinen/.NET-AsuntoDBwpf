@@ -31,6 +31,11 @@ namespace AsuntoDB_WPF
             lbAsuntotyyppiLista.Items.Refresh();
             lbAsuntotyyppiLista.DisplayMemberPath = "Selite";
             lbAsuntotyyppiLista.SelectedValuePath = "Koodi";
+
+            txtAsuntotyyppiSelite.IsEnabled = false;
+            btnAsuntotyyppiPeruuta.IsEnabled = false;
+            btnAsuntotyyppiTallenna.IsEnabled = false;
+            btnAsuntotyyppiPoista.IsEnabled = false;
         }
 
 
@@ -46,6 +51,10 @@ namespace AsuntoDB_WPF
             {
                 txtAsuntotyyppiSelite.Text = "";
                 txtAsuntotyyppiSelite.IsEnabled = false;
+
+                btnAsuntotyyppiPeruuta.IsEnabled = false;
+                btnAsuntotyyppiTallenna.IsEnabled = false;
+                btnAsuntotyyppiPoista.IsEnabled = false;
                 return;
             }
 
@@ -57,6 +66,10 @@ namespace AsuntoDB_WPF
             if (valittu != null)
             {
                 txtAsuntotyyppiSelite.IsEnabled = true;
+
+                btnAsuntotyyppiPeruuta.IsEnabled = true;
+                btnAsuntotyyppiTallenna.IsEnabled = true;
+                btnAsuntotyyppiPoista.IsEnabled = true;
                 sbItem.Content = string.Format("Valittu asuntotyyppi {0}", valittu.Selite);
                 txtAsuntotyyppiSelite.Text = valittu.Selite;
             }
@@ -83,10 +96,6 @@ namespace AsuntoDB_WPF
         /// <param name="e"></param>
         private void btnAsuntotyyppiPeruuta_Click(object sender, RoutedEventArgs e)
         {
-            //var result = from t in db.Asuntotyyppi
-            //             where t.Koodi == valittuAsuntotyyppiKoodi
-            //             select t;
-            //txtAsuntotyyppiSelite.Text = result.FirstOrDefault().Selite;
             naytaAsuntotyyppi();
 
         }
@@ -110,6 +119,81 @@ namespace AsuntoDB_WPF
             // päivitä listaus
 
             LataaListat();
+        }
+
+        /// <summary>
+        /// Lisää uuden asuntotyypin pohjan
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnAsuntotyyppiUusi_Click(object sender, RoutedEventArgs e)
+        {
+            Asuntotyyppi uusi = new Asuntotyyppi { Selite = "uusi asuntotyyppi" };
+            db.Asuntotyyppi.Add(uusi);
+            db.SaveChanges();
+            LataaListat();
+
+            valitseAsuntotyyppiKoodi(uusi.Koodi);
+            naytaAsuntotyyppi();
+        }
+
+        /// <summary>
+        /// Poistaa asuntotyypin
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnAsuntotyyppiPoista_Click(object sender, RoutedEventArgs e)
+        {
+            int tmp = valittuAsuntotyyppiIndex;
+            var result = from at in db.Asuntotyyppi
+                         where at.Koodi == valittuAsuntotyyppiKoodi
+                         select at;
+            if (result.Count() > 0)
+            {
+                var valittu = result.First();
+                if (valittu.Asunto.Count() > 0)
+                {
+                    sbItem.Content = "Ei voida poistaa, sillä asuntotyyppiin on asuntoja.";
+                    return;
+                }
+                db.Asuntotyyppi.Remove(valittu);
+
+                sbItem.Content = string.Format("Poistettiin {0}", valittu.Selite);
+                try
+                {
+                    db.SaveChanges();
+                }
+                catch (Exception)
+                {
+                    sbItem.Content = "Ei voitu poistaa, sillä asuntotyyppiin on asuntoja.";
+                }
+                LataaListat();
+                valitseAsuntotyyppiIndex(tmp - 1);
+                naytaAsuntotyyppi();
+            }
+        }
+
+        private void valitseAsuntotyyppiKoodi(int koodi)
+        {
+            try
+            {
+                lbAsuntotyyppiLista.SelectedValue = koodi;
+            }
+            catch (Exception)
+            {
+                valitseAsuntotyyppiIndex(0);
+            }
+            paivitaValittuAsuntotyyppi();
+            naytaAsuntotyyppi();
+        }
+
+        private void valitseAsuntotyyppiIndex(int index)
+        {
+            if (index < -1) return;
+            if (lbAsuntotyyppiLista.Items.Count - 1 >= index) lbAsuntotyyppiLista.SelectedIndex = index;
+            else lbAsuntotyyppiLista.SelectedIndex = -1;
+            paivitaValittuAsuntotyyppi();
+            naytaAsuntotyyppi();
         }
     }
 }

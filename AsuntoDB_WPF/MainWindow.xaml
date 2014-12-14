@@ -76,8 +76,8 @@
             <TabItem Header="Asuntotyypit">
                 <Grid>
                     <ListBox x:Name="lbAsuntotyyppiLista" Margin="0,0,0,40" HorizontalAlignment="Left" Width="189" SelectionChanged="lbAsuntotyyppiLista_SelectionChanged"/>
-                    <Button x:Name="btnAsuntotyyppiUusi" Content="Uusi" Width="75" Margin="0,0,0,7" HorizontalAlignment="Left" Height="28" VerticalAlignment="Bottom"/>
-                    <Button x:Name="btnAsuntotyyppiPoista" Content="Poista" Width="75" Margin="80,0,0,7" HorizontalAlignment="Left" Height="28" VerticalAlignment="Bottom"/>
+                    <Button x:Name="btnAsuntotyyppiUusi" Content="Uusi" Width="75" Margin="0,0,0,7" HorizontalAlignment="Left" Height="28" VerticalAlignment="Bottom" Click="btnAsuntotyyppiUusi_Click"/>
+                    <Button x:Name="btnAsuntotyyppiPoista" Content="Poista" Width="75" Margin="80,0,0,7" HorizontalAlignment="Left" Height="28" VerticalAlignment="Bottom" Click="btnAsuntotyyppiPoista_Click"/>
 
                     <Label Content="Asuntotyyppi" Margin="194,0,0,0" FontSize="24" HorizontalAlignment="Left" Width="188" Height="45" VerticalAlignment="Top"/>
                     <Label Content="Selite" Margin="194,50,0,0" Height="24" Width="100" VerticalAlignment="Top" HorizontalAlignment="Left"/>
