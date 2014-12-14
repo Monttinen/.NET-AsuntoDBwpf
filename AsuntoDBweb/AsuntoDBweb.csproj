@@ -108,6 +108,7 @@
   <ItemGroup>
     <Content Include="About.aspx" />
     <Content Include="Asunto.aspx" />
+    <Content Include="Asuntotyyppi.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
@@ -220,6 +221,13 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>AsuntoDB_datamodel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Asuntotyyppi.aspx.cs">
+      <DependentUpon>Asuntotyyppi.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Asuntotyyppi.aspx.designer.cs">
+      <DependentUpon>Asuntotyyppi.aspx</DependentUpon>
     </Compile>
     <Compile Include="Asuntotyyppi.cs">
       <DependentUpon>AsuntoDB_datamodel.tt</DependentUpon>

@@ -54,15 +54,17 @@
                         <li><a runat="server" href="~/">Home</a></li>
                         <li><a runat="server" href="~/Henkilo">Henkilöt</a></li>
                         <li><a runat="server" href="~/Asunto">Asunnot</a></li>
+                        <li><a runat="server" href="~/Asuntotyyppi">Asuntotyypit</a></li>
                     </ul>
                 </div>
             </div>
         </div>
         <div class="container body-content">
+            <p />
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
+            <footer id="footer">
             <hr />
-            <footer>
                 <p>&copy; <%: DateTime.Now.Year %> - AsuntoDB</p>
             </footer>
         </div>

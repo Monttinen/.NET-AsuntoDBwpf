@@ -1,7 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Asunto.aspx.cs" Inherits="AsuntoDBweb.Asunto1" %>
-
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+    
     <asp:GridView ID="grdAsunto" runat="server" DataSourceID="AsuntoDB" AllowSorting="True" AutoGenerateColumns="False" >
+        <AlternatingRowStyle BackColor="#dddddd" />
         <Columns>
             <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
             <asp:BoundField DataField="Osoite" HeaderText="Osoite" SortExpression="Osoite"></asp:BoundField>
@@ -13,7 +14,7 @@
                 <EditItemTemplate>
                     <asp:DropDownList ID="DropDownAsuntotyyppi" runat="server"
                         DataSourceID="AsuntoTyyppi" DataTextField="Selite" DataValueField="Koodi"
-                        SelectedValue='<%# Bind("Selite") %>'>
+                        SelectedValue='<%# Bind("Koodi") %>'>
                     </asp:DropDownList>
                 </EditItemTemplate>
                 <ItemTemplate>
