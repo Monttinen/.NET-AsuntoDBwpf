@@ -53,8 +53,8 @@
             <TabItem Header="Asunnot">
                 <Grid>
                     <ListBox x:Name="lbAsuntoLista" Margin="0,0,0,40" HorizontalAlignment="Left" Width="189" SelectionChanged="lbAsuntoLista_SelectionChanged"/>
-                    <Button x:Name="btnAsuntoUusi" Content="Uusi" Width="75" Margin="0,0,0,7" HorizontalAlignment="Left" Height="28" VerticalAlignment="Bottom"/>
-                    <Button x:Name="btnAsuntoPoista" Content="Poista" Width="75" Margin="80,0,0,7" HorizontalAlignment="Left" Height="28" VerticalAlignment="Bottom"/>
+                    <Button x:Name="btnAsuntoUusi" Content="Uusi" Width="75" Margin="0,0,0,7" HorizontalAlignment="Left" Height="28" VerticalAlignment="Bottom" Click="btnAsuntoUusi_Click"/>
+                    <Button x:Name="btnAsuntoPoista" Content="Poista" Width="75" Margin="80,0,0,7" HorizontalAlignment="Left" Height="28" VerticalAlignment="Bottom" Click="btnAsuntoPoista_Click"/>
                     <Label Content="Asunto" Margin="194,0,0,0" FontSize="24" HorizontalAlignment="Left" Width="188" Height="45" VerticalAlignment="Top"/>
                     <Label Content="Asuntonumero" Margin="194,50,0,0" Height="24" Width="100" VerticalAlignment="Top" HorizontalAlignment="Left"/>
                     <TextBox x:Name="txtAsuntoAsuntonumero" Margin="299,50,0,0"  Width="188" Text="" HorizontalAlignment="Left" Height="24" VerticalAlignment="Top" />

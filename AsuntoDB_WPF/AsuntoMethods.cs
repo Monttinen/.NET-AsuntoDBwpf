@@ -19,7 +19,6 @@ namespace AsuntoDB_WPF
     {
         private int valittuAsuntoAvain = -1;
         private int valittuAsuntoIndex = -1;
-        private int valittuAsuntoTyyppi = -1;
 
         private void LataaAsunnot()
         {
@@ -151,6 +150,88 @@ namespace AsuntoDB_WPF
         /// <param name="e"></param>
         private void btnAsuntoPeruuta_Click(object sender, RoutedEventArgs e)
         {
+            naytaAsunto();
+        }
+
+        /// <summary>
+        /// Lisää uuden asunnon
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnAsuntoUusi_Click(object sender, RoutedEventArgs e)
+        {
+            var result = from at in db.Asuntotyyppi
+                         select at;
+            if (result.Count() < 1)
+            {
+                sbItem.Content = "Ei voida lisätä asuntoja koska ei ole asuntotyyppejä.";
+                return;
+            }
+            Asuntotyyppi tyyppi = result.First();
+
+            Asunto uusi = new Asunto { Asuntonumero = "", Osoite = "uusi osoite", Pinta_ala = 0, Huonelukumaara = 1, Asuntotyyppi = tyyppi, Omistusasunto = false };
+            db.Asunto.Add(uusi);
+            db.SaveChanges();
+            LataaListat();
+
+            valitseAsuntoAvain(uusi.Avain);
+        }
+
+        /// <summary>
+        /// Poistaa valitun asunnon
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnAsuntoPoista_Click(object sender, RoutedEventArgs e)
+        {
+            int tmp = valittuAsuntoIndex;
+            var result = from a in db.Asunto
+                         where a.Avain == valittuAsuntoAvain
+                         select a;
+            if (result.Count() > 0)
+            {
+                var valittu = result.First();
+                if (valittu.Henkilo.Count() > 0)
+                {
+                    sbItem.Content = "Ei voida poistaa sillä asunnossa on asukkaita.";
+                    return;
+                }
+                db.Asunto.Remove(valittu);
+                sbItem.Content = string.Format("Poistettiin {0}", valittu.Osoite);
+
+                try
+                {
+                    db.SaveChanges();
+                }
+                catch (Exception)
+                {
+                    sbItem.Content = "Ei voitu poistaa.";
+                }
+                LataaListat();
+                valitseAsuntoIndex(tmp - 1);
+            }
+        }
+
+        private void valitseAsuntoAvain(int avain)
+        {
+            try
+            {
+                lbAsuntoLista.SelectedValue = avain;
+            }
+            catch (Exception)
+            {
+                valitseAsuntoIndex(0);
+            }
+            paivitaValittuAsunto();
+            naytaAsunto();
+        }
+
+        private void valitseAsuntoIndex(int index)
+        {
+            if (index < -1) return;
+            if (lbAsuntoLista.Items.Count - 1 >= index) lbAsuntoLista.SelectedIndex = index;
+            else lbAsuntoLista.SelectedIndex = -1;
+            paivitaValittuAsunto();
             naytaAsunto();
         }
     }

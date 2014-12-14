@@ -134,7 +134,6 @@ namespace AsuntoDB_WPF
             LataaListat();
 
             valitseAsuntotyyppiKoodi(uusi.Koodi);
-            naytaAsuntotyyppi();
         }
 
         /// <summary>
