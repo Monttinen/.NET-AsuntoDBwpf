@@ -2,14 +2,14 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <asp:Label ID="lblMessage" runat="server" Text="" ForeColor="Red"></asp:Label>
-    <asp:GridView ID="gridSample" runat="server" AutoGenerateColumns="False" ShowFooter="True"
-        CssClass="grid" OnRowCommand="gridSample_RowCommand"
+    <asp:GridView ID="gridHenkilo" runat="server" AutoGenerateColumns="False" ShowFooter="True"
+        CssClass="grid" OnRowCommand="gridHenkilo_RowCommand"
         DataKeyNames="Avain" CellPadding="4" ForeColor="#333333"
-        GridLines="None" OnRowCancelingEdit="gridSample_RowCancelingEdit"
-        OnRowEditing="gridSample_RowEditing"
-        OnRowUpdating="gridSample_RowUpdating"
-        OnRowDataBound="gridSample_RowDataBound"
-        OnRowDeleting="gridSample_RowDeleting">
+        GridLines="None" OnRowCancelingEdit="gridHenkilo_RowCancelingEdit"
+        OnRowEditing="gridHenkilo_RowEditing"
+        OnRowUpdating="gridHenkilo_RowUpdating"
+        OnRowDataBound="gridHenkilo_RowDataBound"
+        OnRowDeleting="gridHenkilo_RowDeleting">
         <AlternatingRowStyle BackColor="White" />
         <Columns>
             <asp:TemplateField HeaderText="">
