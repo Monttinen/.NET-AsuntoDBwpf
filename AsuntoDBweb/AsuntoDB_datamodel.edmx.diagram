@@ -5,13 +5,13 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="9396030b752a4048a607731eb33eebe0" Name="Diagram1">
-        <EntityTypeShape EntityType="AsuntoDBModel.Asunto" Width="2" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="AsuntoDBModel.Asuntotyyppi" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="AsuntoDBModel.Henkilo" Width="1.5" PointX="5.75" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="AsuntoDBModel.Sukupuoli" Width="1.5" PointX="7.75" PointY="1.5" IsExpanded="true" />
-        <AssociationConnector Association="AsuntoDBModel.FK_Asunto_ToAsuntotyyppi" ManuallyRouted="false" />
-        <AssociationConnector Association="AsuntoDBModel.FK_Henkilo_ToAsunto" ManuallyRouted="false" />
-        <AssociationConnector Association="AsuntoDBModel.FK_Henkilo_ToSukupuoli" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="AsuntoDBModel.Asunto" Width="2.25" PointX="3" PointY="1" />
+        <EntityTypeShape EntityType="AsuntoDBModel.Asuntotyyppi" Width="1.5" PointX="0.75" PointY="1.5" />
+        <EntityTypeShape EntityType="AsuntoDBModel.Henkilo" Width="1.5" PointX="6.125" PointY="1.125" />
+        <EntityTypeShape EntityType="AsuntoDBModel.Sukupuoli" Width="1.5" PointX="8.875" PointY="1.875" />
+        <AssociationConnector Association="AsuntoDBModel.FK_Asunto_ToAsuntotyyppi" />
+        <AssociationConnector Association="AsuntoDBModel.FK_Henkilo_ToAsunto" />
+        <AssociationConnector Association="AsuntoDBModel.FK_Henkilo_ToSukupuoli" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

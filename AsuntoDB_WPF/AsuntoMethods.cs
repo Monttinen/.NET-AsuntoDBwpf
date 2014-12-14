@@ -113,5 +113,45 @@ namespace AsuntoDB_WPF
             cbAsuntotyyppi.SelectedValuePath = "Koodi";
             cbAsuntotyyppi.Items.Refresh();
         }
+
+        /// <summary>
+        /// Tallenna muutokset
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnAsuntoTallenna_Click(object sender, RoutedEventArgs e)
+        {
+            var result = from t in db.Asunto
+                         where t.Avain == valittuAsuntoAvain
+                         select t;
+            var valittu = result.FirstOrDefault();
+
+            if (valittu != null)
+            {
+                valittu.Asuntonumero = txtAsuntoAsuntonumero.Text;
+                valittu.Osoite = txtAsuntoOsoite.Text;
+                // TODO tarkasta nämä
+                valittu.Pinta_ala = int.Parse(txtAsuntoPintaala.Text);
+                valittu.Huonelukumaara = int.Parse(txtAsuntoHuonemaara.Text);
+
+                valittu.Omistusasunto = (bool)chkOmistusasunto.IsChecked;
+                valittu.AsuntotyyppiKoodi = (int)cbAsuntotyyppi.SelectedValue;
+
+                db.SaveChanges();
+                sbItem.Content = string.Format("Tallennettu muutokset asuntoon {0}", valittu.Osoite);
+
+                LataaListat();
+            }
+        }
+
+        /// <summary>
+        /// Peruuta muutokset.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnAsuntoPeruuta_Click(object sender, RoutedEventArgs e)
+        {
+            naytaAsunto();
+        }
     }
 }

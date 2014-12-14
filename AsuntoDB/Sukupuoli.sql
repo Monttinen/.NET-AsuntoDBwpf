@@ -1,6 +1,5 @@
 ﻿CREATE TABLE [dbo].[Sukupuoli]
 (
-	[Avain] INT NOT NULL PRIMARY KEY, 
-	[Koodi] INT NOT NULL,
+	[Koodi] INT NOT NULL PRIMARY KEY,
     [Selite] NVARCHAR(50) NOT NULL
 )

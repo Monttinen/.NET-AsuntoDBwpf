@@ -34,6 +34,18 @@ namespace AsuntoDB_WPF
             //lbHenkiloLista.DisplayMemberPath = "Sukunimi"; // määritelty templatena xaml:issa
             lbHenkiloLista.SelectedValuePath = "Avain";
             PaivitaSukupuoliCombo();
+
+            txtSukunimi.IsEnabled = false;
+            txtEtunimi.IsEnabled = false;
+            txtSyntymaaika.IsEnabled = false;
+            txtHenkilonumero.IsEnabled = false;
+            cbSukupuoli.IsEnabled = false;
+
+            btnHenkiloTallenna.IsEnabled = false;
+            btnHenkiloPeruuta.IsEnabled = false;
+
+            btnHenkiloAsuntoLisaa.IsEnabled = false;
+            btnHenkiloAsuntoPoista.IsEnabled = false;
         }
 
         private void lbHenkiloLista_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -149,6 +161,88 @@ namespace AsuntoDB_WPF
             cbSukupuoli.DisplayMemberPath = "Selite";
             cbSukupuoli.SelectedValuePath = "Koodi";
             cbSukupuoli.Items.Refresh();
+        }
+
+        /// <summary>
+        /// Tallentaa muutokset kenttiin
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnHenkiloTallenna_Click(object sender, RoutedEventArgs e)
+        {
+            var result = from h in db.Henkilo
+                         where h.Avain == valittuHenkiloAvain
+                         select h;
+            var valittu = result.FirstOrDefault();
+
+            if (valittu != null)
+            {   
+                // TODO validointi
+                valittu.Sukunimi = txtSukunimi.Text;
+                valittu.Etunimi = txtEtunimi.Text;
+                valittu.Syntymaaika = txtSyntymaaika.Text;
+                valittu.Henkilonumero = txtHenkilonumero.Text;
+                valittu.SukupuoliKoodi = (int) cbSukupuoli.SelectedValue;
+
+                db.SaveChanges();
+                sbItem.Content = string.Format("Tallennettu muutokset henkilöön {0} {1}", valittu.Etunimi, valittu.Sukunimi);
+                LataaHenkilot();
+            }
+        }
+
+        /// <summary>
+        /// Peruuttaa muutokset
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnHenkiloPeruuta_Click(object sender, RoutedEventArgs e)
+        {
+            naytaHenkilo();
+        }
+
+        /// <summary>
+        /// Poista henkilön asunto
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnHenkiloAsuntoPoista_Click(object sender, RoutedEventArgs e)
+        {
+            var result = from h in db.Henkilo
+                         where h.Avain == valittuHenkiloAvain
+                         select h;
+            result.FirstOrDefault().Asunto = null;
+
+            db.SaveChanges();
+            LataaListat();
+
+            naytaHenkilo();
+        }
+
+        /// <summary>
+        /// Avaa dialogi asunnon valintaan
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnHenkiloAsuntoLisaa_Click(object sender, RoutedEventArgs e)
+        {
+            AsunnonValinta valinta = new AsunnonValinta(db);
+            valinta.DataContext = this.DataContext;
+            if (valinta.ShowDialog() == DialogResult.HasValue)
+                valittuAsuntoAvain = valinta.ValittuAsuntoAvain;
+            valinta = null;
+
+            if (valittuAsuntoAvain >= 0)
+            {
+                var result = from h in db.Henkilo
+                             where h.Avain == valittuHenkiloAvain
+                             select h;
+                result.FirstOrDefault().AsuntoAvain = valittuAsuntoAvain;
+
+                db.SaveChanges();
+                LataaListat();
+
+                naytaHenkilo();
+            }
         }
     }
 }

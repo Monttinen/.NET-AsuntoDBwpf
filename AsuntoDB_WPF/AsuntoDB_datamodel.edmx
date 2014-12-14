@@ -9,7 +9,7 @@
           <Key>
             <PropertyRef Name="Avain" />
           </Key>
-          <Property Name="Avain" Type="int" Nullable="false" />
+          <Property Name="Avain" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Asuntonumero" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Osoite" Type="nvarchar" MaxLength="100" />
           <Property Name="Pinta_ala" Type="int" Nullable="false" />
@@ -19,17 +19,16 @@
         </EntityType>
         <EntityType Name="Asuntotyyppi">
           <Key>
-            <PropertyRef Name="Avain" />
+            <PropertyRef Name="Koodi" />
           </Key>
-          <Property Name="Avain" Type="int" Nullable="false" />
-          <Property Name="Koodi" Type="int" Nullable="false" />
+          <Property Name="Koodi" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Selite" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Henkilo">
           <Key>
             <PropertyRef Name="Avain" />
           </Key>
-          <Property Name="Avain" Type="int" Nullable="false" />
+          <Property Name="Avain" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Henkilonumero" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Etunimi" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Sukunimi" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -39,9 +38,8 @@
         </EntityType>
         <EntityType Name="Sukupuoli">
           <Key>
-            <PropertyRef Name="Avain" />
+            <PropertyRef Name="Koodi" />
           </Key>
-          <Property Name="Avain" Type="int" Nullable="false" />
           <Property Name="Koodi" Type="int" Nullable="false" />
           <Property Name="Selite" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
@@ -50,7 +48,7 @@
           <End Role="Asunto" Type="Self.Asunto" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Asuntotyyppi">
-              <PropertyRef Name="Avain" />
+              <PropertyRef Name="Koodi" />
             </Principal>
             <Dependent Role="Asunto">
               <PropertyRef Name="AsuntotyyppiKoodi" />
@@ -74,7 +72,7 @@
           <End Role="Henkilo" Type="Self.Henkilo" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Sukupuoli">
-              <PropertyRef Name="Avain" />
+              <PropertyRef Name="Koodi" />
             </Principal>
             <Dependent Role="Henkilo">
               <PropertyRef Name="SukupuoliKoodi" />
@@ -125,7 +123,7 @@
           <Key>
             <PropertyRef Name="Avain" />
           </Key>
-          <Property Name="Avain" Type="Int32" Nullable="false" />
+          <Property Name="Avain" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Asuntonumero" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Osoite" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Pinta_ala" Type="Int32" Nullable="false" />
@@ -137,10 +135,9 @@
         </EntityType>
         <EntityType Name="Asuntotyyppi">
           <Key>
-            <PropertyRef Name="Avain" />
+            <PropertyRef Name="Koodi" />
           </Key>
-          <Property Name="Avain" Type="Int32" Nullable="false" />
-          <Property Name="Koodi" Type="Int32" Nullable="false" />
+          <Property Name="Koodi" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Selite" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Asunto" Relationship="AsuntoDBModel.FK_Asunto_ToAsuntotyyppi" FromRole="Asuntotyyppi" ToRole="Asunto" />
         </EntityType>
@@ -148,7 +145,7 @@
           <Key>
             <PropertyRef Name="Avain" />
           </Key>
-          <Property Name="Avain" Type="Int32" Nullable="false" />
+          <Property Name="Avain" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Henkilonumero" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Etunimi" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Sukunimi" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -160,9 +157,8 @@
         </EntityType>
         <EntityType Name="Sukupuoli">
           <Key>
-            <PropertyRef Name="Avain" />
+            <PropertyRef Name="Koodi" />
           </Key>
-          <Property Name="Avain" Type="Int32" Nullable="false" />
           <Property Name="Koodi" Type="Int32" Nullable="false" />
           <Property Name="Selite" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Henkilo" Relationship="AsuntoDBModel.FK_Henkilo_ToSukupuoli" FromRole="Sukupuoli" ToRole="Henkilo" />
@@ -172,7 +168,7 @@
           <End Type="AsuntoDBModel.Asunto" Role="Asunto" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Asuntotyyppi">
-              <PropertyRef Name="Avain" />
+              <PropertyRef Name="Koodi" />
             </Principal>
             <Dependent Role="Asunto">
               <PropertyRef Name="AsuntotyyppiKoodi" />
@@ -196,7 +192,7 @@
           <End Type="AsuntoDBModel.Henkilo" Role="Henkilo" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Sukupuoli">
-              <PropertyRef Name="Avain" />
+              <PropertyRef Name="Koodi" />
             </Principal>
             <Dependent Role="Henkilo">
               <PropertyRef Name="SukupuoliKoodi" />
@@ -227,7 +223,6 @@
               <MappingFragment StoreEntitySet="Asuntotyyppi">
                 <ScalarProperty Name="Selite" ColumnName="Selite" />
                 <ScalarProperty Name="Koodi" ColumnName="Koodi" />
-                <ScalarProperty Name="Avain" ColumnName="Avain" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -249,7 +244,6 @@
               <MappingFragment StoreEntitySet="Sukupuoli">
                 <ScalarProperty Name="Selite" ColumnName="Selite" />
                 <ScalarProperty Name="Koodi" ColumnName="Koodi" />
-                <ScalarProperty Name="Avain" ColumnName="Avain" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

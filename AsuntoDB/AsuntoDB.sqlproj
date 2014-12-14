@@ -71,4 +71,7 @@
   <ItemGroup>
     <PostDeploy Include="DB_insert.sql" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="AsuntoDB.publish.xml" />
+  </ItemGroup>
 </Project>

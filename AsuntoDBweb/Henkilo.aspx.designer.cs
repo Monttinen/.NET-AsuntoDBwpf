@@ -13,30 +13,21 @@ namespace AsuntoDBweb {
     public partial class Henkilo1 {
         
         /// <summary>
-        /// grdHenkilo control.
+        /// lblMessage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView grdHenkilo;
+        protected global::System.Web.UI.WebControls.Label lblMessage;
         
         /// <summary>
-        /// AsuntoDB control.
+        /// gridSample control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource AsuntoDB;
-        
-        /// <summary>
-        /// Sukupuoli control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource Sukupuoli;
+        protected global::System.Web.UI.WebControls.GridView gridSample;
     }
 }

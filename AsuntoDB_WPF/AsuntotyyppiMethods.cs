@@ -56,6 +56,7 @@ namespace AsuntoDB_WPF
 
             if (valittu != null)
             {
+                txtAsuntotyyppiSelite.IsEnabled = true;
                 sbItem.Content = string.Format("Valittu asuntotyyppi {0}", valittu.Selite);
                 txtAsuntotyyppiSelite.Text = valittu.Selite;
             }
@@ -72,6 +73,43 @@ namespace AsuntoDB_WPF
                 valittuAsuntotyyppiKoodi = -1;
             }
             valittuAsuntotyyppiIndex = lbAsuntotyyppiLista.SelectedIndex;
+        }
+
+
+        /// <summary>
+        /// Peruuttaa muutoksen tekstikenttään
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnAsuntotyyppiPeruuta_Click(object sender, RoutedEventArgs e)
+        {
+            //var result = from t in db.Asuntotyyppi
+            //             where t.Koodi == valittuAsuntotyyppiKoodi
+            //             select t;
+            //txtAsuntotyyppiSelite.Text = result.FirstOrDefault().Selite;
+            naytaAsuntotyyppi();
+
+        }
+
+        /// <summary>
+        /// Tallentaa muutokset kenttään
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnAsuntotyyppiTallenna_Click(object sender, RoutedEventArgs e)
+        {
+            if (txtAsuntotyyppiSelite.Text == "") return;
+
+            var result = from t in db.Asuntotyyppi
+                         where t.Koodi == valittuAsuntotyyppiKoodi
+                         select t;
+            result.FirstOrDefault().Selite = txtAsuntotyyppiSelite.Text;
+
+            db.SaveChanges();
+
+            // päivitä listaus
+
+            LataaListat();
         }
     }
 }

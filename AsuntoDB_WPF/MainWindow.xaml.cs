@@ -30,6 +30,15 @@ namespace AsuntoDB_WPF
             LataaListat();
         }
 
+        /// <summary>
+        /// Antaa databaseyhteyden esim asunnon valinta dialogille.
+        /// </summary>
+        /// <returns></returns>
+        public AsuntoDBEntities GetDB()
+        {
+            return db;
+        }
+
         private void LataaListat()
         {
             
@@ -37,6 +46,5 @@ namespace AsuntoDB_WPF
             LataaAsunnot();
             LataaHenkilot();
         }
-
     }
 }

@@ -62,6 +62,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AsunnonValinta.xaml.cs">
+      <DependentUpon>AsunnonValinta.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Asunto.cs">
       <DependentUpon>AsuntoDB_datamodel.tt</DependentUpon>
     </Compile>
@@ -82,6 +85,10 @@
     <Compile Include="Sukupuoli.cs">
       <DependentUpon>AsuntoDB_datamodel.tt</DependentUpon>
     </Compile>
+    <Page Include="AsunnonValinta.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

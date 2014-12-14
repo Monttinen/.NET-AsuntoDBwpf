@@ -7,8 +7,8 @@
       <Diagram DiagramId="f2d0c8715eed4ef78665ea037415826d" Name="Diagram1">
         <EntityTypeShape EntityType="AsuntoDBModel.Asunto" Width="2.125" PointX="3" PointY="1" />
         <EntityTypeShape EntityType="AsuntoDBModel.Asuntotyyppi" Width="1.5" PointX="0.75" PointY="1.5" />
-        <EntityTypeShape EntityType="AsuntoDBModel.Henkilo" Width="1.5" PointX="6.625" PointY="1.125" />
-        <EntityTypeShape EntityType="AsuntoDBModel.Sukupuoli" Width="1.5" PointX="9.375" PointY="2" />
+        <EntityTypeShape EntityType="AsuntoDBModel.Henkilo" Width="1.5" PointX="6.5" PointY="1" />
+        <EntityTypeShape EntityType="AsuntoDBModel.Sukupuoli" Width="1.5" PointX="8.625" PointY="2.125" />
         <AssociationConnector Association="AsuntoDBModel.FK_Asunto_ToAsuntotyyppi" />
         <AssociationConnector Association="AsuntoDBModel.FK_Henkilo_ToAsunto" />
         <AssociationConnector Association="AsuntoDBModel.FK_Henkilo_ToSukupuoli" />

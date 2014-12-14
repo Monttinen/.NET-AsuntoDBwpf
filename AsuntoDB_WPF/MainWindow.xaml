@@ -26,8 +26,8 @@
                     <Label Content="Sukupuoli" Margin="195,164,0,0" Height="24" Width="100" VerticalAlignment="Top" HorizontalAlignment="Left"/>
                     <ComboBox x:Name="cbSukupuoli" HorizontalAlignment="Left" Margin="300,166,0,0" VerticalAlignment="Top" Width="188"/>
 
-                    <Button x:Name="btnHenkiloTallenna" Content="Tallenna" HorizontalAlignment="Left" Margin="300,296,0,0" VerticalAlignment="Top" Width="75"/>
-                    <Button x:Name="btnHenkiloPeruuta" Content="Peruuta" HorizontalAlignment="Left" Margin="380,296,0,0" VerticalAlignment="Top" Width="75"/>
+                    <Button x:Name="btnHenkiloTallenna" Content="Tallenna" HorizontalAlignment="Left" Margin="300,296,0,0" VerticalAlignment="Top" Width="75" Click="btnHenkiloTallenna_Click"/>
+                    <Button x:Name="btnHenkiloPeruuta" Content="Peruuta" HorizontalAlignment="Left" Margin="380,296,0,0" VerticalAlignment="Top" Width="75" Click="btnHenkiloPeruuta_Click"/>
 
                     <Label Content="Henkilön asunto" Margin="558,0,0,0" FontSize="24" HorizontalAlignment="Left" Width="188" Height="45" VerticalAlignment="Top"/>
                     <Label Content="Asuntonumero" Margin="558,50,0,0" Height="24" Width="100" VerticalAlignment="Top" HorizontalAlignment="Left"/>
@@ -43,8 +43,8 @@
                     <Label Content="Omistusasunto" Margin="558,262,0,0" Height="24" Width="100" VerticalAlignment="Top" HorizontalAlignment="Left"/>
                     <CheckBox x:Name="chkHenkiloOmistusasunto" Content="CheckBox" HorizontalAlignment="Left" Margin="663,270,0,0" VerticalAlignment="Top" IsEnabled="False"/>
 
-                    <Button x:Name="btnHenkiloAsuntoLisaa" Content="Lisää" HorizontalAlignment="Left" Margin="663,296,0,0" VerticalAlignment="Top" Width="75"/>
-                    <Button x:Name="btnHenkiloAsuntoPoista" Content="Poista" HorizontalAlignment="Left" Margin="743,296,0,0" VerticalAlignment="Top" Width="75"/>
+                    <Button x:Name="btnHenkiloAsuntoLisaa" Content="Lisää" HorizontalAlignment="Left" Margin="663,296,0,0" VerticalAlignment="Top" Width="75" Click="btnHenkiloAsuntoLisaa_Click"/>
+                    <Button x:Name="btnHenkiloAsuntoPoista" Content="Poista" HorizontalAlignment="Left" Margin="743,296,0,0" VerticalAlignment="Top" Width="75" Click="btnHenkiloAsuntoPoista_Click"/>
 
 
 
@@ -68,8 +68,8 @@
                     <ComboBox x:Name="cbAsuntotyyppi" HorizontalAlignment="Left" Margin="299,233,0,0" VerticalAlignment="Top" Width="188"/>
                     <Label Content="Omistusasunto" Margin="194,260,0,0" Height="24" Width="100" VerticalAlignment="Top" HorizontalAlignment="Left"/>
                     <CheckBox x:Name="chkOmistusasunto" Content="CheckBox" HorizontalAlignment="Left" Margin="299,268,0,0" VerticalAlignment="Top"/>
-                    <Button x:Name="btnAsuntoTallenna" Content="Tallenna" HorizontalAlignment="Left" Margin="314,299,0,0" VerticalAlignment="Top" Width="75"/>
-                    <Button x:Name="btnAsuntoPeruuta" Content="Peruuta" HorizontalAlignment="Left" Margin="394,299,0,0" VerticalAlignment="Top" Width="75"/>
+                    <Button x:Name="btnAsuntoTallenna" Content="Tallenna" HorizontalAlignment="Left" Margin="314,299,0,0" VerticalAlignment="Top" Width="75" Click="btnAsuntoTallenna_Click"/>
+                    <Button x:Name="btnAsuntoPeruuta" Content="Peruuta" HorizontalAlignment="Left" Margin="394,299,0,0" VerticalAlignment="Top" Width="75" Click="btnAsuntoPeruuta_Click"/>
 
                 </Grid>
             </TabItem>
@@ -82,8 +82,8 @@
                     <Label Content="Asuntotyyppi" Margin="194,0,0,0" FontSize="24" HorizontalAlignment="Left" Width="188" Height="45" VerticalAlignment="Top"/>
                     <Label Content="Selite" Margin="194,50,0,0" Height="24" Width="100" VerticalAlignment="Top" HorizontalAlignment="Left"/>
                     <TextBox x:Name="txtAsuntotyyppiSelite" Margin="299,50,0,0"  Width="188" Text="" HorizontalAlignment="Left" Height="24" VerticalAlignment="Top" />
-                    <Button x:Name="btnAsuntotyyppiTallenna" Content="Tallenna" HorizontalAlignment="Left" Margin="299,79,0,0" VerticalAlignment="Top" Width="75"/>
-                    <Button x:Name="btnAsuntotyyppiPeruuta" Content="Peruuta" HorizontalAlignment="Left" Margin="379,79,0,0" VerticalAlignment="Top" Width="75"/>
+                    <Button x:Name="btnAsuntotyyppiTallenna" Content="Tallenna" HorizontalAlignment="Left" Margin="299,79,0,0" VerticalAlignment="Top" Width="75" Click="btnAsuntotyyppiTallenna_Click"/>
+                    <Button x:Name="btnAsuntotyyppiPeruuta" Content="Peruuta" HorizontalAlignment="Left" Margin="379,79,0,0" VerticalAlignment="Top" Width="75" Click="btnAsuntotyyppiPeruuta_Click"/>
 
                 </Grid>
             </TabItem>

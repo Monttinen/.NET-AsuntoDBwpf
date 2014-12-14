@@ -114,7 +114,6 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="Henkilo.aspx" />
     <Content Include="packages.config">
       <SubType>Designer</SubType>
     </Content>
@@ -172,6 +171,7 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Site.Master" />
+    <Content Include="Henkilo.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -249,13 +249,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Henkilo.aspx.cs">
-      <DependentUpon>Henkilo.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Henkilo.aspx.designer.cs">
-      <DependentUpon>Henkilo.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Henkilo.cs">
       <DependentUpon>AsuntoDB_datamodel.tt</DependentUpon>
     </Compile>
@@ -276,6 +269,13 @@
     </Compile>
     <Compile Include="Sukupuoli.cs">
       <DependentUpon>AsuntoDB_datamodel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Henkilo.aspx.cs">
+      <DependentUpon>Henkilo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Henkilo.aspx.designer.cs">
+      <DependentUpon>Henkilo.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>

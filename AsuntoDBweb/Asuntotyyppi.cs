@@ -19,7 +19,6 @@ namespace AsuntoDBweb
             this.Asunto = new HashSet<Asunto>();
         }
     
-        public int Avain { get; set; }
         public int Koodi { get; set; }
         public string Selite { get; set; }
     
