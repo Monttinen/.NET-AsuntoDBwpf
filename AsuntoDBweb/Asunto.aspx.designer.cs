@@ -13,30 +13,21 @@ namespace AsuntoDBweb {
     public partial class Asunto1 {
         
         /// <summary>
-        /// grdAsunto control.
+        /// lblMessage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView grdAsunto;
+        protected global::System.Web.UI.WebControls.Label lblMessage;
         
         /// <summary>
-        /// AsuntoDB control.
+        /// gridAsunto control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource AsuntoDB;
-        
-        /// <summary>
-        /// AsuntoTyyppi control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource AsuntoTyyppi;
+        protected global::System.Web.UI.WebControls.GridView gridAsunto;
     }
 }
