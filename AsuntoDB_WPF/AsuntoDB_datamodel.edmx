@@ -43,6 +43,28 @@
           <Property Name="Koodi" Type="int" Nullable="false" />
           <Property Name="Selite" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'AsuntoDB.dbo.raportti_asukaskooste' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="raportti_asukaskooste">
+          <Key>
+            <PropertyRef Name="Asuntotyyppi" />
+          </Key>
+          <Property Name="Asuntotyyppi" Type="nvarchar" MaxLength="58" Nullable="false" />
+          <Property Name="Hlo_lkm" Type="int" />
+          <Property Name="Pintaala_ka" Type="int" />
+          <Property Name="HuoneLkm_ka" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'AsuntoDB.dbo.raportti_sukupuolijakauma' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="raportti_sukupuolijakauma">
+          <Key>
+            <PropertyRef Name="Sukupuoli" />
+            <PropertyRef Name="Omistusasunto" />
+          </Key>
+          <Property Name="Sukupuoli" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Omistusasunto" Type="bit" Nullable="false" />
+          <Property Name="Asukkaita" Type="int" />
+        </EntityType>
         <Association Name="FK_Asunto_ToAsuntotyyppi">
           <End Role="Asuntotyyppi" Type="Self.Asuntotyyppi" Multiplicity="1" />
           <End Role="Asunto" Type="Self.Asunto" Multiplicity="*" />
@@ -84,6 +106,21 @@
           <EntitySet Name="Asuntotyyppi" EntityType="Self.Asuntotyyppi" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Henkilo" EntityType="Self.Henkilo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Sukupuoli" EntityType="Self.Sukupuoli" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="raportti_asukaskooste" EntityType="Self.raportti_asukaskooste" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [raportti_asukaskooste].[Asuntotyyppi] AS [Asuntotyyppi], 
+    [raportti_asukaskooste].[Hlo_lkm] AS [Hlo_lkm], 
+    [raportti_asukaskooste].[Pintaala_ka] AS [Pintaala_ka], 
+    [raportti_asukaskooste].[HuoneLkm_ka] AS [HuoneLkm_ka]
+    FROM [dbo].[raportti_asukaskooste] AS [raportti_asukaskooste]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="raportti_sukupuolijakauma" EntityType="Self.raportti_sukupuolijakauma" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [raportti_sukupuolijakauma].[Sukupuoli] AS [Sukupuoli], 
+    [raportti_sukupuolijakauma].[Omistusasunto] AS [Omistusasunto], 
+    [raportti_sukupuolijakauma].[Asukkaita] AS [Asukkaita]
+    FROM [dbo].[raportti_sukupuolijakauma] AS [raportti_sukupuolijakauma]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK_Asunto_ToAsuntotyyppi" Association="Self.FK_Asunto_ToAsuntotyyppi">
             <End Role="Asuntotyyppi" EntitySet="Asuntotyyppi" />
             <End Role="Asunto" EntitySet="Asunto" />
@@ -118,6 +155,8 @@
             <End Role="Sukupuoli" EntitySet="Sukupuoli" />
             <End Role="Henkilo" EntitySet="Henkilo" />
           </AssociationSet>
+          <EntitySet Name="raportti_asukaskooste" EntityType="AsuntoDBModel.raportti_asukaskooste" />
+          <EntitySet Name="raportti_sukupuolijakauma" EntityType="AsuntoDBModel.raportti_sukupuolijakauma" />
         </EntityContainer>
         <EntityType Name="Asunto">
           <Key>
@@ -199,6 +238,24 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="raportti_asukaskooste">
+          <Key>
+            <PropertyRef Name="Asuntotyyppi" />
+          </Key>
+          <Property Name="Asuntotyyppi" Type="String" Nullable="false" MaxLength="58" FixedLength="false" Unicode="true" />
+          <Property Name="Hlo_lkm" Type="Int32" />
+          <Property Name="Pintaala_ka" Type="Int32" />
+          <Property Name="HuoneLkm_ka" Type="Int32" />
+        </EntityType>
+        <EntityType Name="raportti_sukupuolijakauma">
+          <Key>
+            <PropertyRef Name="Sukupuoli" />
+            <PropertyRef Name="Omistusasunto" />
+          </Key>
+          <Property Name="Sukupuoli" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Omistusasunto" Type="Boolean" Nullable="false" />
+          <Property Name="Asukkaita" Type="Int32" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -244,6 +301,25 @@
               <MappingFragment StoreEntitySet="Sukupuoli">
                 <ScalarProperty Name="Selite" ColumnName="Selite" />
                 <ScalarProperty Name="Koodi" ColumnName="Koodi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="raportti_asukaskooste">
+            <EntityTypeMapping TypeName="AsuntoDBModel.raportti_asukaskooste">
+              <MappingFragment StoreEntitySet="raportti_asukaskooste">
+                <ScalarProperty Name="HuoneLkm_ka" ColumnName="HuoneLkm_ka" />
+                <ScalarProperty Name="Pintaala_ka" ColumnName="Pintaala_ka" />
+                <ScalarProperty Name="Hlo_lkm" ColumnName="Hlo_lkm" />
+                <ScalarProperty Name="Asuntotyyppi" ColumnName="Asuntotyyppi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="raportti_sukupuolijakauma">
+            <EntityTypeMapping TypeName="AsuntoDBModel.raportti_sukupuolijakauma">
+              <MappingFragment StoreEntitySet="raportti_sukupuolijakauma">
+                <ScalarProperty Name="Asukkaita" ColumnName="Asukkaita" />
+                <ScalarProperty Name="Omistusasunto" ColumnName="Omistusasunto" />
+                <ScalarProperty Name="Sukupuoli" ColumnName="Sukupuoli" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

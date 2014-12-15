@@ -16,29 +16,16 @@ using System.Windows.Shapes;
 namespace AsuntoDB_WPF
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Asukaskoosteen logiikka
     /// </summary>
     public partial class MainWindow : Window
     {
-        private AsuntoDBEntities db;
+        private void LataaAsukaskooste(){
+            var result = from ak in db.raportti_asukaskooste
+                         select ak;
 
-        public MainWindow()
-        {
-            InitializeComponent();
-            db = new AsuntoDBEntities();
-
-            LataaListat();
+            grdAsukaskooste.ItemsSource = result.ToList();
         }
 
-        private void LataaListat()
-        {
-            
-            LataaAsuntotyypit();
-            LataaAsunnot();
-            LataaHenkilot();
-
-            LataaAsukaskooste();
-            LataaSukupuolijakauma();
-        }
     }
 }

@@ -16,29 +16,16 @@ using System.Windows.Shapes;
 namespace AsuntoDB_WPF
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Sukupuolijakauman metodit
     /// </summary>
     public partial class MainWindow : Window
     {
-        private AsuntoDBEntities db;
-
-        public MainWindow()
+        private void LataaSukupuolijakauma()
         {
-            InitializeComponent();
-            db = new AsuntoDBEntities();
+            var result = from sj in db.raportti_sukupuolijakauma
+                         select sj;
 
-            LataaListat();
-        }
-
-        private void LataaListat()
-        {
-            
-            LataaAsuntotyypit();
-            LataaAsunnot();
-            LataaHenkilot();
-
-            LataaAsukaskooste();
-            LataaSukupuolijakauma();
+            grdSukupuolijakauma.ItemsSource = result.ToList();
         }
     }
 }

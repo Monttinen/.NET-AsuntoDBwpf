@@ -62,6 +62,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AsukaskoosteMethods.cs" />
     <Compile Include="AsunnonValinta.xaml.cs">
       <DependentUpon>AsunnonValinta.xaml</DependentUpon>
     </Compile>
@@ -82,9 +83,16 @@
       <DependentUpon>AsuntoDB_datamodel.tt</DependentUpon>
     </Compile>
     <Compile Include="HenkiloMethods.cs" />
+    <Compile Include="raportti_asukaskooste.cs">
+      <DependentUpon>AsuntoDB_datamodel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="raportti_sukupuolijakauma.cs">
+      <DependentUpon>AsuntoDB_datamodel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Sukupuoli.cs">
       <DependentUpon>AsuntoDB_datamodel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SukupuolijakaumaMethods.cs" />
     <Page Include="AsunnonValinta.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

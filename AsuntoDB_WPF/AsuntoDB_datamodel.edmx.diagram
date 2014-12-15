@@ -12,6 +12,8 @@
         <AssociationConnector Association="AsuntoDBModel.FK_Asunto_ToAsuntotyyppi" />
         <AssociationConnector Association="AsuntoDBModel.FK_Henkilo_ToAsunto" />
         <AssociationConnector Association="AsuntoDBModel.FK_Henkilo_ToSukupuoli" />
+        <EntityTypeShape EntityType="AsuntoDBModel.raportti_asukaskooste" Width="2.125" PointX="0.75" PointY="4.75" />
+        <EntityTypeShape EntityType="AsuntoDBModel.raportti_sukupuolijakauma" Width="2.25" PointX="3.875" PointY="4.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
