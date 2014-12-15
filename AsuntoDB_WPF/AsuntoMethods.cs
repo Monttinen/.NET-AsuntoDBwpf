@@ -33,6 +33,19 @@ namespace AsuntoDB_WPF
             lbAsuntoLista.SelectedValuePath = "Avain";
 
             PaivitaAsuntotyyppiCombo();
+
+            chkOmistusasunto.IsChecked = false;
+            cbAsuntotyyppi.SelectedIndex = -1;
+
+            txtAsuntoAsuntonumero.IsEnabled = false;
+            txtAsuntoOsoite.IsEnabled = false;
+            txtAsuntoPintaala.IsEnabled = false;
+            txtAsuntoHuonemaara.IsEnabled = false;
+            chkOmistusasunto.IsEnabled = false;
+            cbAsuntotyyppi.IsEnabled = false;
+            btnAsuntoPeruuta.IsEnabled = false;
+            btnAsuntoPoista.IsEnabled = false;
+            btnAsuntoTallenna.IsEnabled = false;
         }
 
 
@@ -60,6 +73,11 @@ namespace AsuntoDB_WPF
                 chkOmistusasunto.IsEnabled = false;
                 cbAsuntotyyppi.IsEnabled = false;
 
+
+                btnAsuntoPeruuta.IsEnabled = false;
+                btnAsuntoPoista.IsEnabled = false;
+                btnAsuntoTallenna.IsEnabled = false;
+
                 return;
             }
 
@@ -84,6 +102,10 @@ namespace AsuntoDB_WPF
                 chkOmistusasunto.IsEnabled = true;
                 cbAsuntotyyppi.IsEnabled = true;
                 cbAsuntotyyppi.SelectedValue = valittu.AsuntotyyppiKoodi;
+
+                btnAsuntoPeruuta.IsEnabled = true;
+                btnAsuntoPoista.IsEnabled = true;
+                btnAsuntoTallenna.IsEnabled = true;
             }
         }
 

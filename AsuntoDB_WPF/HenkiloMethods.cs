@@ -41,6 +41,7 @@ namespace AsuntoDB_WPF
 
             btnHenkiloTallenna.IsEnabled = false;
             btnHenkiloPeruuta.IsEnabled = false;
+            btnHenkiloPoista.IsEnabled = false;
 
             btnHenkiloAsuntoLisaa.IsEnabled = false;
             btnHenkiloAsuntoPoista.IsEnabled = false;
@@ -70,6 +71,7 @@ namespace AsuntoDB_WPF
 
                 btnHenkiloTallenna.IsEnabled = false;
                 btnHenkiloPeruuta.IsEnabled = false;
+                btnHenkiloPoista.IsEnabled = false;
 
                 // henkilön asunnon kentät
                 txtHenkiloAsuntoAsuntonumero.Text = "";
@@ -107,6 +109,7 @@ namespace AsuntoDB_WPF
 
                 btnHenkiloTallenna.IsEnabled = true;
                 btnHenkiloPeruuta.IsEnabled = true;
+                btnHenkiloPoista.IsEnabled = true;
 
                 // henkilön asunnon kentät
                 if (valittu.AsuntoAvain >= 0)
