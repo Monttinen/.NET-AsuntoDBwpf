@@ -19,8 +19,6 @@ namespace AsuntoDB_WPF
     {
         private int valittuHenkiloAvain = -1;
         private int valittuHenkiloIndex = -1;
-        private int valittuSukupuoli = -1;
-        private int valittuHenkilonAsunto = -1;
 
         private void LataaHenkilot()
         {
@@ -100,7 +98,7 @@ namespace AsuntoDB_WPF
                 txtSyntymaaika.Text = valittu.Syntymaaika;
                 txtHenkilonumero.Text = valittu.Henkilonumero;
                 cbSukupuoli.SelectedValue = valittu.SukupuoliKoodi;
-                
+
                 txtSukunimi.IsEnabled = true;
                 txtEtunimi.IsEnabled = true;
                 txtSyntymaaika.IsEnabled = true;
@@ -114,9 +112,9 @@ namespace AsuntoDB_WPF
                 if (valittu.AsuntoAvain >= 0)
                 {
                     txtHenkiloAsuntoAsuntonumero.Text = valittu.Asunto.Asuntonumero;
-                    txtHenkiloAsuntoHuonemaara.Text = string.Format("{0}",valittu.Asunto.Huonelukumaara);
+                    txtHenkiloAsuntoHuonemaara.Text = string.Format("{0}", valittu.Asunto.Huonelukumaara);
                     txtHenkiloAsuntoOsoite.Text = valittu.Asunto.Osoite;
-                    txtHenkiloAsuntoPintaala.Text = string.Format("{0}",valittu.Asunto.Pinta_ala);
+                    txtHenkiloAsuntoPintaala.Text = string.Format("{0}", valittu.Asunto.Pinta_ala);
                     cbHenkiloAsuntotyyppi.SelectedValue = valittu.Asunto.Asuntotyyppi;
                     chkHenkiloOmistusasunto.IsChecked = valittu.Asunto.Omistusasunto;
 
@@ -176,13 +174,13 @@ namespace AsuntoDB_WPF
             var valittu = result.FirstOrDefault();
 
             if (valittu != null)
-            {   
+            {
                 // TODO validointi
                 valittu.Sukunimi = txtSukunimi.Text;
                 valittu.Etunimi = txtEtunimi.Text;
                 valittu.Syntymaaika = txtSyntymaaika.Text;
                 valittu.Henkilonumero = txtHenkilonumero.Text;
-                valittu.SukupuoliKoodi = (int) cbSukupuoli.SelectedValue;
+                valittu.SukupuoliKoodi = (int)cbSukupuoli.SelectedValue;
 
                 db.SaveChanges();
                 sbItem.Content = string.Format("Tallennettu muutokset henkilöön {0} {1}", valittu.Etunimi, valittu.Sukunimi);
@@ -243,6 +241,75 @@ namespace AsuntoDB_WPF
 
                 naytaHenkilo();
             }
+        }
+
+        /// <summary>
+        /// Lisää uuden henkilön
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnHenkiloUusi_Click(object sender, RoutedEventArgs e)
+        {
+            Henkilo uusi = new Henkilo { Henkilonumero = "", Etunimi = "<Etunimi>", Sukunimi = "<Sukunimi>", Syntymaaika = "00000000", Sukupuoli = db.Sukupuoli.FirstOrDefault() };
+            db.Henkilo.Add(uusi);
+            db.SaveChanges();
+            LataaListat();
+
+            valitseHenkiloAvain(uusi.Avain);
+        }
+
+        /// <summary>
+        /// Poistaa henkilön
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnHenkiloPoista_Click(object sender, RoutedEventArgs e)
+        {
+            int tmp = valittuHenkiloIndex;
+            var result = from h in db.Henkilo
+                         where h.Avain == valittuHenkiloAvain
+                         select h;
+            if (result.Count() > 0)
+            {
+                var valittu = result.First();
+                try
+                {
+                    db.Henkilo.Remove(valittu);
+                    db.SaveChanges();
+                    sbItem.Content = string.Format("Poistettiin {0}, {1}", valittu.Sukunimi, valittu.Etunimi);
+                }
+                catch (Exception)
+                {
+                    sbItem.Content = "Ei voitu poistaa.";
+                }
+
+                LataaListat();
+                valitseHenkiloIndex(tmp - 1);
+            }
+
+        }
+
+        private void valitseHenkiloAvain(int avain)
+        {
+            try
+            {
+                lbHenkiloLista.SelectedValue = avain;
+            }
+            catch (Exception)
+            {
+                valitseHenkiloIndex(0);
+            }
+            paivitaValittuHenkilo();
+            naytaHenkilo();
+        }
+
+        private void valitseHenkiloIndex(int index)
+        {
+            if (index < -1) return;
+            if (lbHenkiloLista.Items.Count - 1 >= index) lbHenkiloLista.SelectedIndex = index;
+            else lbHenkiloLista.SelectedIndex = -1;
+            paivitaValittuHenkilo();
+            naytaHenkilo();
         }
     }
 }

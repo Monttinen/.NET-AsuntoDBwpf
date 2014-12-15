@@ -11,8 +11,8 @@
             <TabItem Header="Asukkaat">
                 <Grid>
                     <ListBox x:Name="lbHenkiloLista" Margin="0,0,0,40" HorizontalAlignment="Left" Width="189" ItemTemplate="{DynamicResource HenkiloTemplate}" SelectionChanged="lbHenkiloLista_SelectionChanged"/>
-                    <Button x:Name="btnHenkiloUusi" Content="Uusi" Width="75" Margin="0,0,0,7" HorizontalAlignment="Left" Height="28" VerticalAlignment="Bottom"/>
-                    <Button x:Name="btnHenkiloPoista" Content="Poista" Width="75" Margin="80,0,0,7" HorizontalAlignment="Left" Height="28" VerticalAlignment="Bottom"/>
+                    <Button x:Name="btnHenkiloUusi" Content="Uusi" Width="75" Margin="0,0,0,7" HorizontalAlignment="Left" Height="28" VerticalAlignment="Bottom" Click="btnHenkiloUusi_Click"/>
+                    <Button x:Name="btnHenkiloPoista" Content="Poista" Width="75" Margin="80,0,0,7" HorizontalAlignment="Left" Height="28" VerticalAlignment="Bottom" Click="btnHenkiloPoista_Click"/>
 
                     <Label Content="Henkilö" Margin="194,0,0,0" FontSize="24" HorizontalAlignment="Left" Width="188" Height="45" VerticalAlignment="Top"/>
                     <Label Content="Henkilönumero" Margin="195,50,0,0" Height="24" Width="100" VerticalAlignment="Top" HorizontalAlignment="Left"/>
