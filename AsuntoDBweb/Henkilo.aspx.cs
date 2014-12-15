@@ -10,6 +10,8 @@ namespace AsuntoDBweb
     public partial class Henkilo1 : System.Web.UI.Page
     {
         private AsuntoDBEntities db = new AsuntoDBEntities();
+        private int valittuHenkiloAvain = -1;
+        private Henkilo valittuHenkilo = null;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -108,6 +110,18 @@ namespace AsuntoDBweb
                     lblMessage.Text = "Lisätty onnistuneesti.";
                     BindGrid();
 
+                }
+            }
+            if (e.CommandName == "ValitseHenkilo")
+            {
+                valittuHenkiloAvain = int.Parse(e.CommandArgument.ToString());
+                var result = from h in db.Henkilo
+                             where h.Avain == valittuHenkiloAvain
+                             select h;
+                if (result.Count() > 0)
+                {
+                    valittuHenkilo = result.First();
+                    Response.Redirect(string.Format("AsunnonValinta.aspx?valittuHenkiloAvain={0}",valittuHenkiloAvain));
                 }
             }
         }

@@ -108,6 +108,7 @@
   <ItemGroup>
     <Content Include="About.aspx" />
     <Content Include="Asukaskooste.aspx" />
+    <Content Include="AsunnonValinta.aspx" />
     <Content Include="Asunto.aspx" />
     <Content Include="Asuntotyyppi.aspx" />
     <Content Include="Contact.aspx" />
@@ -205,6 +206,13 @@
     </Compile>
     <Compile Include="Asukaskooste.aspx.designer.cs">
       <DependentUpon>Asukaskooste.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AsunnonValinta.aspx.cs">
+      <DependentUpon>AsunnonValinta.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AsunnonValinta.aspx.designer.cs">
+      <DependentUpon>AsunnonValinta.aspx</DependentUpon>
     </Compile>
     <Compile Include="Asunto.aspx.cs">
       <DependentUpon>Asunto.aspx</DependentUpon>

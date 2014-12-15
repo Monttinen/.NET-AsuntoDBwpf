@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Henkilo.aspx.cs" Inherits="AsuntoDBweb.Henkilo1" %>
+﻿<%@ Page Title="Henkilöt" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Henkilo.aspx.cs" Inherits="AsuntoDBweb.Henkilo1" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <asp:Label ID="lblMessage" runat="server" Text="" ForeColor="Red"></asp:Label>
@@ -120,6 +120,12 @@
                         ValidationGroup="newGrp">*</asp:RequiredFieldValidator>
                 </FooterTemplate>
             </asp:TemplateField>
+            <asp:TemplateField HeaderText="">
+                <ItemTemplate>
+                    <asp:LinkButton ID="lnkValitseHenkilo" runat="server" Text="Valitse Henkilo" CommandName="ValitseHenkilo" ToolTip="Valitse Henkilo"
+                        CommandArgument='<%# Bind("Avain") %>'><img src="../Images/dots7.png" width="16" height="16"/></asp:LinkButton>
+                </ItemTemplate>
+            </asp:TemplateField>
         </Columns>
         <EditRowStyle BackColor="#2461BF" />
         <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
@@ -132,4 +138,5 @@
         <SortedDescendingCellStyle BackColor="#E9EBEF" />
         <SortedDescendingHeaderStyle BackColor="#4870BE" />
     </asp:GridView>
+    <p />
 </asp:Content>

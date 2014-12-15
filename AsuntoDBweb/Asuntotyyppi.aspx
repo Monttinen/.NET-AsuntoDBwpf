@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Asuntotyyppi.aspx.cs" Inherits="AsuntoDBweb.Asuntotyyppi1" %>
+﻿<%@ Page Title="Asuntotyypit" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Asuntotyyppi.aspx.cs" Inherits="AsuntoDBweb.Asuntotyyppi1" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <asp:Label ID="lblMessage" runat="server" Text="" ForeColor="Red"></asp:Label>
