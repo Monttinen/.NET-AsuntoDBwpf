@@ -55,6 +55,8 @@
                         <li><a runat="server" href="~/Henkilo">Henkilöt</a></li>
                         <li><a runat="server" href="~/Asunto">Asunnot</a></li>
                         <li><a runat="server" href="~/Asuntotyyppi">Asuntotyypit</a></li>
+                        <li><a runat="server" href="~/Sukupuolijakauma">Sukupuolijakauma</a></li>
+                        <li><a runat="server" href="~/Asukaskooste">Asukaskooste</a></li>
                     </ul>
                 </div>
             </div>

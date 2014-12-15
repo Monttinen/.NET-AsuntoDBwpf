@@ -29,5 +29,7 @@ namespace AsuntoDBweb
         public virtual DbSet<Asuntotyyppi> Asuntotyyppi { get; set; }
         public virtual DbSet<Henkilo> Henkilo { get; set; }
         public virtual DbSet<Sukupuoli> Sukupuoli { get; set; }
+        public virtual DbSet<raportti_asukaskooste> raportti_asukaskooste { get; set; }
+        public virtual DbSet<raportti_sukupuolijakauma> raportti_sukupuolijakauma { get; set; }
     }
 }

@@ -12,7 +12,6 @@
         OnRowDataBound="gridAsuntotyyppi_RowDataBound"
         OnRowDeleting="gridAsuntotyyppi_RowDeleting">
         <AlternatingRowStyle BackColor="White" />
-        <AlternatingRowStyle BackColor="White" />
         <Columns>
             <asp:TemplateField HeaderText="">
                 <ItemTemplate>

@@ -107,6 +107,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="About.aspx" />
+    <Content Include="Asukaskooste.aspx" />
     <Content Include="Asunto.aspx" />
     <Content Include="Asuntotyyppi.aspx" />
     <Content Include="Contact.aspx" />
@@ -172,6 +173,7 @@
     <Content Include="Global.asax" />
     <Content Include="Site.Master" />
     <Content Include="Henkilo.aspx" />
+    <Content Include="Sukupuolijakauma.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -197,6 +199,13 @@
       <DependentUpon>About.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Asukaskooste.aspx.cs">
+      <DependentUpon>Asukaskooste.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Asukaskooste.aspx.designer.cs">
+      <DependentUpon>Asukaskooste.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Asunto.aspx.cs">
       <DependentUpon>Asunto.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -253,6 +262,12 @@
       <DependentUpon>AsuntoDB_datamodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="raportti_asukaskooste.cs">
+      <DependentUpon>AsuntoDB_datamodel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="raportti_sukupuolijakauma.cs">
+      <DependentUpon>AsuntoDB_datamodel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -276,6 +291,13 @@
     </Compile>
     <Compile Include="Henkilo.aspx.designer.cs">
       <DependentUpon>Henkilo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Sukupuolijakauma.aspx.cs">
+      <DependentUpon>Sukupuolijakauma.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sukupuolijakauma.aspx.designer.cs">
+      <DependentUpon>Sukupuolijakauma.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
