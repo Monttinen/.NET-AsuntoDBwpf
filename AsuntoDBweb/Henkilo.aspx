@@ -120,6 +120,11 @@
                         ValidationGroup="newGrp">*</asp:RequiredFieldValidator>
                 </FooterTemplate>
             </asp:TemplateField>
+            <asp:TemplateField HeaderText="Asunto">
+                <ItemTemplate>
+                    <asp:Label ID="lnkHenkiloOsoite" runat="server" Text='<%# Bind("Asunto.Osoite") %>' />
+                </ItemTemplate>
+            </asp:TemplateField>
             <asp:TemplateField HeaderText="">
                 <ItemTemplate>
                     <asp:LinkButton ID="lnkValitseHenkilo" runat="server" Text="Valitse Henkilo" CommandName="ValitseHenkilo" ToolTip="Valitse Henkilo"

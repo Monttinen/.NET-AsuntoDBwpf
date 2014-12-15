@@ -46,7 +46,7 @@ namespace AsuntoDBweb
                 lblValittuHenkilo.Text = string.Format("  {0}, {1}", valittuHenkilo.Sukunimi, valittuHenkilo.Etunimi);
                 if (valittuHenkilo.AsuntoAvain != null)
                 {
-                    lblValitunHenkilonAsunto.Text = string.Format("{0}", valittuHenkilo.Asunto.Osoite);
+                    lblValitunHenkilonAsunto.Text = string.Format("  {0}", valittuHenkilo.Asunto.Osoite);
                 }
                 else
                 {
@@ -76,8 +76,8 @@ namespace AsuntoDBweb
                     HaeHenkilo();
                     valittuHenkilo.AsuntoAvain = valittuAsuntoAvain;
                     db.SaveChanges();
-
-                    lblValitunHenkilonAsunto.Text = string.Format("{0}", valittuHenkilo.Asunto.Osoite);
+                    Response.Redirect(Request.RawUrl);
+                    //lblValitunHenkilonAsunto.Text = string.Format("{0}", valittuHenkilo.Asunto.Osoite);
                 }
             }
         }
@@ -87,7 +87,8 @@ namespace AsuntoDBweb
             HaeHenkilo();
             valittuHenkilo.Asunto = null;
             db.SaveChanges();
-            lblValitunHenkilonAsunto.Text = "  (ei asuntoa)";
+            Response.Redirect(Request.RawUrl);
+            //lblValitunHenkilonAsunto.Text = "  (ei asuntoa)";
         }
     }
 }

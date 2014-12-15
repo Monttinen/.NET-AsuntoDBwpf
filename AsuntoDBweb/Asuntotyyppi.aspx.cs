@@ -83,6 +83,11 @@ namespace AsuntoDBweb
                          where at.Koodi == Koodi
                          select at;
             Asuntotyyppi valittu = result.FirstOrDefault();
+            if (valittu.Asunto.Count() > 0)
+            {
+                lblMessage.Text = "Ei voida poistaa koska tämän tyyppisiä asuntoja on olemassa.";
+                return;
+            }
             db.Asuntotyyppi.Remove(valittu);
             db.SaveChanges();
             BindGrid();

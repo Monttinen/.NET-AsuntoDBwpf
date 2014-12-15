@@ -163,6 +163,11 @@ namespace AsuntoDBweb
                          select a;
             Asunto obj = result.FirstOrDefault();
 
+            if (obj.Henkilo.Count() > 0)
+            {
+                lblMessage.Text = "Ei voida poistaa, koska asunnossa asuu henkilöitä.";
+                return;
+            }
             db.Asunto.Remove(obj);
             db.SaveChanges();
             BindGrid();
