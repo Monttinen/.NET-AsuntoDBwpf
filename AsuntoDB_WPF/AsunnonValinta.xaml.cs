@@ -39,7 +39,6 @@ namespace AsuntoDB_WPF
 
         private void LataaAunnot()
         {
-            
             var result = from a in db.Asunto
                          orderby a.Osoite
                          select a;

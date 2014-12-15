@@ -17,7 +17,6 @@
                 <DataGridTextColumn Header="Huonemäärä" Binding="{Binding Huonelukumaara}" />
                 <DataGridTextColumn Header="Asuntotyyppi" Binding="{Binding Asuntotyyppi.Selite}" />
                 <DataGridCheckBoxColumn Header="Omistusasunto" Binding="{Binding Omistusasunto}" />
-                <!--<DataGridTextColumn Header="Asukkaat" Binding="{Binding Henkilo}" />-->
             </DataGrid.Columns>
         </DataGrid>
 

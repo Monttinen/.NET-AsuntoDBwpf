@@ -39,7 +39,7 @@
                     <Label Content="Huonemäärä" Margin="558,204,0,0" Height="24" Width="100" VerticalAlignment="Top" HorizontalAlignment="Left"/>
                     <TextBox x:Name="txtHenkiloAsuntoHuonemaara" Margin="663,204,0,0"  Width="188" Text="" HorizontalAlignment="Left" Height="24" VerticalAlignment="Top" IsEnabled="False" />
                     <Label Content="Asuntotyyppi" Margin="558,233,0,0" Height="24" Width="100" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-                    <ComboBox x:Name="cbHenkiloAsuntotyyppi" HorizontalAlignment="Left" Margin="663,235,0,0" VerticalAlignment="Top" Width="188" IsEnabled="False"/>
+                    <TextBox x:Name="txtHenkiloAsuntotyyppi" HorizontalAlignment="Left" Margin="663,235,0,0" VerticalAlignment="Top" Width="188" IsEnabled="False"/>
                     <Label Content="Omistusasunto" Margin="558,262,0,0" Height="24" Width="100" VerticalAlignment="Top" HorizontalAlignment="Left"/>
                     <CheckBox x:Name="chkHenkiloOmistusasunto" Content="CheckBox" HorizontalAlignment="Left" Margin="663,270,0,0" VerticalAlignment="Top" IsEnabled="False"/>
 

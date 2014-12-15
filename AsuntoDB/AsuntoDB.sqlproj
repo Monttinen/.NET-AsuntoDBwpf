@@ -64,6 +64,7 @@
     <Build Include="Asunto.sql" />
     <Build Include="Sukupuoli.sql" />
     <Build Include="Asuntotyyppi.sql" />
+    <Build Include="raportti_asukaskooste.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="AsuntoDB.refactorlog" />

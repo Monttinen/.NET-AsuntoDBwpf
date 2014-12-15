@@ -76,7 +76,7 @@ namespace AsuntoDB_WPF
                 txtHenkiloAsuntoHuonemaara.Text = "";
                 txtHenkiloAsuntoOsoite.Text = "";
                 txtHenkiloAsuntoPintaala.Text = "";
-                cbHenkiloAsuntotyyppi.SelectedIndex = -1;
+                txtHenkiloAsuntotyyppi.Text = "";
                 chkHenkiloOmistusasunto.IsChecked = false;
 
                 btnHenkiloAsuntoLisaa.IsEnabled = false;
@@ -115,7 +115,7 @@ namespace AsuntoDB_WPF
                     txtHenkiloAsuntoHuonemaara.Text = string.Format("{0}", valittu.Asunto.Huonelukumaara);
                     txtHenkiloAsuntoOsoite.Text = valittu.Asunto.Osoite;
                     txtHenkiloAsuntoPintaala.Text = string.Format("{0}", valittu.Asunto.Pinta_ala);
-                    cbHenkiloAsuntotyyppi.SelectedValue = valittu.Asunto.Asuntotyyppi;
+                    txtHenkiloAsuntotyyppi.Text = valittu.Asunto.Asuntotyyppi.Selite;
                     chkHenkiloOmistusasunto.IsChecked = valittu.Asunto.Omistusasunto;
 
                     btnHenkiloAsuntoLisaa.IsEnabled = false;
@@ -127,7 +127,7 @@ namespace AsuntoDB_WPF
                     txtHenkiloAsuntoHuonemaara.Text = "";
                     txtHenkiloAsuntoOsoite.Text = "";
                     txtHenkiloAsuntoPintaala.Text = "";
-                    cbHenkiloAsuntotyyppi.SelectedIndex = -1;
+                    txtHenkiloAsuntotyyppi.Text = "";
                     chkHenkiloOmistusasunto.IsChecked = false;
 
                     btnHenkiloAsuntoLisaa.IsEnabled = true;
