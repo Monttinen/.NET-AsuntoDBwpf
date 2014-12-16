@@ -90,7 +90,7 @@
             <TabItem Header="Asukaskooste">
                 <DataGrid x:Name="grdAsukaskooste" IsReadOnly="True"/>
             </TabItem>
-            <TabItem Header="Sukupuolijakaupa">
+            <TabItem Header="Sukupuolijakauma">
                 <DataGrid x:Name="grdSukupuolijakauma" IsReadOnly="True"/>
             </TabItem>
         </TabControl>
